@@ -2,4 +2,6 @@
 
 # xjlib
 
-compile(group: 'me.xjliao', name: 'xjlib', version: '1.0.1', ext: 'aar', classifier: 'release')
+Build.gradle added:
+
+compile 'me.xjliao:xjlib:1.0.0'
