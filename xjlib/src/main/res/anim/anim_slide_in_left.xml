@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: xjlib
+  ~ FileName: anim_slide_in_left.xml
+  ~ ClassName: anim_slide_in_left.xml
+  ~ LastModified: 2/5/17 8:27 PM
+  -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="600"
+        android:fromXDelta="100%"
+        android:toXDelta="0%"></translate>
+</set>

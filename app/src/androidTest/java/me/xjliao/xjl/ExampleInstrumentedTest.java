@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2017 xjliao.me created by xjliao
+ * ProjectName: xjl
+ * ModuleName: app
+ * FileName: ExampleInstrumentedTest.java
+ * ClassName: ExampleInstrumentedTest
+ * LastModified: 10/11/17 10:55 AM
+ */
+
 package me.xjliao.xjl;
 
 import android.content.Context;

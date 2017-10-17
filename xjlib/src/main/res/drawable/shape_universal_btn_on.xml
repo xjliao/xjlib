@@ -1,0 +1,13 @@
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: xjlib
+  ~ FileName: shape_universal_btn_on.xml
+  ~ ClassName: shape_universal_btn_on.xml
+  ~ LastModified: 10/11/17 2:30 PM
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="5dp"></corners>
+    <solid android:color="@color/colorPrimaryDark" />
+</shape>

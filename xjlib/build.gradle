@@ -1,14 +1,21 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.jakewharton.butterknife'
 
-version = "1.0.0"
+version = "1.0.1"
 
 android {
+    lintOptions {
+        abortOnError false
+    }
+
     compileSdkVersion 26
     buildToolsVersion "25.0.2"
+    publishNonDefault true
+
     defaultConfig {
-        applicationId "me.xjliao.xjlib"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
@@ -16,14 +23,29 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String", "HOST", "\"121.43.162.245\""
+            buildConfigField "int", "PORT", "8080"
+        }
+
         release {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "String", "HOST", "\"121.43.162.245\""
+            buildConfigField "int", "PORT", "8080"
         }
     }
 }
 
-def siteUrl = 'https://github.com/xjliao/xjlib'    // Git项目主页
+def siteUrl = 'https://github.com/xjliao/xjlib'
 def gitUrl = 'https://github.com/xjliao/xjlib.git'
 
 Properties properties = new Properties()
@@ -35,14 +57,44 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    testCompile 'junit:junit:4.12'
+
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    compile('com.squareup.retrofit2:converter-simplexml:2.1.0') {
+        exclude module: 'stax-api'
+    }
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.google.dagger:dagger:2.5'
+    apt 'com.google.dagger:dagger-compiler:2.5'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.squareup.okio:okio:1.10.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.squareup:otto:1.3.8'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.kyleduo.switchbutton:library:1.4.4'
+    compile "com.daimajia.swipelayout:library:1.2.0@aar"
+    compile 'com.daimajia.androidanimations:library:1.1.2@aar'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.android.support:multidex:1.0.1'
 }
 
 bintray {
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
+    override = true
+    publish = true
+
     pkg {
         repo = 'maven'//自己创建的仓库名字，要跟Bintray上创建的仓库一样
         name = 'xjlib'//上传到JCenter的名字,最终引用的名字
@@ -52,10 +104,10 @@ bintray {
         publish = true // 是否是公开项目，公开别人可以引用
 
         version {
-            name = "1.0.0"
+            name = '1.0.1'
             desc = 'xjliao android base lib.'//描述，自己定义
             released  = new Date()
-            vcsTag = 'v1.0.0'
+            vcsTag = '1.0.1'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
@@ -96,34 +148,34 @@ install {
     }
 }
 
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
 
-task javadoc(type: Javadoc) {
-    failOnError false //必须添加以免出错
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
+//task javadoc(type: Javadoc) {
+//    failOnError false //必须添加以免出错
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
 
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
 
-javadoc {
-    options{
-        //如果你的项目里面有中文注释的话，必须将格式设置为UTF-8，不然会出现乱码
-        encoding "UTF-8"
-        charSet 'UTF-8'
-        author true
-        version true
-        links "http://docs.oracle.com/javase/7/docs/api"
-    }
-}
+//javadoc {
+//    options{
+//        如果你的项目里面有中文注释的话，必须将格式设置为UTF-8，不然会出现乱码
+//        encoding "UTF-8"
+//        charSet 'UTF-8'
+//        author true
+//        version true
+//        links "http://docs.oracle.com/javase/7/docs/api"
+//    }
+//}

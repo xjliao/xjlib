@@ -1,3 +1,12 @@
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: app
+  ~ FileName: strings.xml
+  ~ ClassName: strings.xml
+  ~ LastModified: 10/11/17 10:55 AM
+  -->
+
 <resources>
     <string name="app_name">xjl</string>
 </resources>

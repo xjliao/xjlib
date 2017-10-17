@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: app
+  ~ FileName: AndroidManifest.xml
+  ~ ClassName: AndroidManifest.xml
+  ~ LastModified: 10/11/17 10:56 AM
+  -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.xjliao.xjl">
 

@@ -1,6 +1,19 @@
+/*
+ * Copyright (c) 2017 xjliao.me created by xjliao
+ * ProjectName: xjl
+ * ModuleName: app
+ * FileName: build.gradle
+ * ClassName: build.gradle
+ * LastModified: 10/11/17 12:00 PM
+ */
+
 apply plugin: 'com.android.application'
 
 android {
+    lintOptions {
+        abortOnError false
+    }
+
     compileSdkVersion 26
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -20,6 +33,7 @@ android {
 }
 
 dependencies {
+    compile project(":xjlib")
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: xjlib
+  ~ FileName: pop_frombottom_in.xml
+  ~ ClassName: pop_frombottom_in.xml
+  ~ LastModified: 2/5/17 8:27 PM
+  -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="250"
+        android:fromYDelta="100.0%"
+        android:toYDelta="0.0" />
+</set>

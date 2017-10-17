@@ -1,0 +1,20 @@
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: xjlib
+  ~ FileName: shape_oval_btn_on.xml
+  ~ ClassName: shape_oval_btn_on.xml
+  ~ LastModified: 10/11/17 2:36 PM
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <corners
+        android:bottomLeftRadius="100dp"
+        android:bottomRightRadius="100dp"
+        android:topLeftRadius="100dp"
+        android:topRightRadius="100dp" />
+
+    <solid android:color="@color/colorPrimaryDark" />
+
+</shape>

@@ -1,13 +1,45 @@
+/*
+ * Copyright (c) 2017 xjliao.me created by xjliao
+ * ProjectName: xjl
+ * ModuleName: app
+ * FileName: MainActivity.java
+ * ClassName: MainActivity
+ * LastModified: 10/11/17 2:20 PM
+ */
+
 package me.xjliao.xjl;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import me.xjliao.xjlib.base.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void setupComponent() {
+
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initViews() {
+
+    }
+
+    @Override
+    protected void initListeners() {
+
+    }
+
+    @Override
+    protected void initAdapters() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

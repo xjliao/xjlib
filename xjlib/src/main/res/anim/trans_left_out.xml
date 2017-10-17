@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: xjlib
+  ~ FileName: trans_left_out.xml
+  ~ ClassName: trans_left_out.xml
+  ~ LastModified: 2/5/17 8:27 PM
+  -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="@android:integer/config_longAnimTime"
+        android:fromXDelta="0"
+        android:toXDelta="-100%p" />
+</set>

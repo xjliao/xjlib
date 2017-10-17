@@ -1,3 +1,12 @@
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: xjlib
+  ~ FileName: AndroidManifest.xml
+  ~ ClassName: AndroidManifest.xml
+  ~ LastModified: 10/11/17 10:58 AM
+  -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
     package="me.xjliao.xjlib">

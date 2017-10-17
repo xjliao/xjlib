@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2017 xjliao.me created by xjliao
+ * ProjectName: xjl
+ * ModuleName: app
+ * FileName: ExampleUnitTest.java
+ * ClassName: ExampleUnitTest
+ * LastModified: 10/11/17 10:55 AM
+ */
+
 package me.xjliao.xjl;
 
 import org.junit.Test;

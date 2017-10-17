@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: xjlib
+  ~ FileName: edit_frame.xml
+  ~ ClassName: edit_frame.xml
+  ~ LastModified: 10/11/17 2:36 PM
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <corners android:radius="5dp" />
+
+    <solid android:color="@color/white" />
+
+    <stroke
+        android:width="0.5dp"
+        android:color="@color/divider" />
+
+    <padding
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp" />
+
+</shape>
