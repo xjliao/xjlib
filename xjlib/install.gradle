@@ -1,0 +1,50 @@
+/*
+ * Copyright (c) 2017 xjliao.me created by xjliao
+ * ProjectName: xjl
+ * ModuleName: xjlib
+ * FileName: install.gradle
+ * ClassName: install.gradle
+ * LastModified: 10/17/17 3:20 PM
+ */
+
+apply plugin: 'com.github.dcendents.android-maven'
+
+def siteUrl = 'https://github.com/xjliao/xjlib'
+def gitUrl = 'https://github.com/xjliao/xjlib.git'
+
+version  = '1.0.0'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'xjlib'
+                artifactId 'xjlib'
+                description 'xjliao base lib.'
+                url siteUrl
+
+                licenses {
+                    license {
+                        name 'MIT'
+                        url 'https://opensource.org/licenses/MIT'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'xjliao'
+                        name 'xjliao'
+                        email 'lxj990@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}

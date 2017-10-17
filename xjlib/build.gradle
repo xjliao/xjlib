@@ -1,10 +1,8 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.jakewharton.butterknife'
 
-version = "1.0.1"
+version = "1.0.0"
 
 android {
     lintOptions {
@@ -13,7 +11,6 @@ android {
 
     compileSdkVersion 26
     buildToolsVersion "25.0.2"
-    publishNonDefault true
 
     defaultConfig {
         minSdkVersion 15
@@ -44,13 +41,6 @@ android {
         }
     }
 }
-
-def siteUrl = 'https://github.com/xjliao/xjlib'
-def gitUrl = 'https://github.com/xjliao/xjlib.git'
-
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-group = "me.xjliao"
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -89,93 +79,5 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
 }
 
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-    override = true
-    publish = true
-
-    pkg {
-        repo = 'maven'//自己创建的仓库名字，要跟Bintray上创建的仓库一样
-        name = 'xjlib'//上传到JCenter的名字,最终引用的名字
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl //这个好像是必须的，我尝试过传空字符串好像是不成功的
-        licenses = ['MIT']//不能随便写，只能是仓库创建时选择的license type
-        publish = true // 是否是公开项目，公开别人可以引用
-
-        version {
-            name = '1.0.1'
-            desc = 'xjliao android base lib.'//描述，自己定义
-            released  = new Date()
-            vcsTag = '1.0.1'
-            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
-        }
-    }
-    configurations = ['archives']
-}
-
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                // Add your description here
-                name 'xjlib'//项目名
-                description 'xjliao base lib.'//项目描述
-                url siteUrl
-                // Set your license
-                licenses {
-                    license {
-                        name 'MIT' //和之前自己定义的协议一致
-                        url 'https://raw.githubusercontent.com/minggo620/Pluto-Android/master/LICENSE'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'xjliao'        //填写bintray或者github的用户名，这里我填的是我的github名
-                        name 'xjliao'         //姓名，这里我填的是Bintray上的昵称
-                        email 'lxj990@gmail.com' //邮箱
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
-
-//task sourcesJar(type: Jar) {
-//    from android.sourceSets.main.java.srcDirs
-//    classifier = 'sources'
-//}
-
-//task javadoc(type: Javadoc) {
-//    failOnError false //必须添加以免出错
-//    source = android.sourceSets.main.java.srcDirs
-//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//}
-
-//task javadocJar(type: Jar, dependsOn: javadoc) {
-//    classifier = 'javadoc'
-//    from javadoc.destinationDir
-//}
-
-//artifacts {
-//    archives javadocJar
-//    archives sourcesJar
-//}
-
-//javadoc {
-//    options{
-//        如果你的项目里面有中文注释的话，必须将格式设置为UTF-8，不然会出现乱码
-//        encoding "UTF-8"
-//        charSet 'UTF-8'
-//        author true
-//        version true
-//        links "http://docs.oracle.com/javase/7/docs/api"
-//    }
-//}
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'
