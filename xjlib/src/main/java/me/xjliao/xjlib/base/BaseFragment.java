@@ -150,12 +150,12 @@ public abstract class BaseFragment extends Fragment {
 
     public void startActivityX(Intent intent) {
         getActivity().startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 
     public void startActivityForResultX(Intent intent, int requestCode) {
         getActivity().startActivityForResult(intent, requestCode);
-        getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 
 }

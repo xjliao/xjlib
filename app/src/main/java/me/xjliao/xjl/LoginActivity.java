@@ -2,18 +2,23 @@
  * Copyright (c) 2017 xjliao.me created by xjliao
  * ProjectName: xjl
  * ModuleName: app
- * FileName: MainActivity.java
- * ClassName: MainActivity
- * LastModified: 10/11/17 2:20 PM
+ * FileName: LoginActivity.java
+ * ClassName: LoginActivity
+ * LastModified: 10/18/17 3:01 PM
  */
 
 package me.xjliao.xjl;
 
 import android.view.View;
 
+import butterknife.OnClick;
 import me.xjliao.xjlib.base.BaseActivity;
 
-public class MainActivity extends BaseActivity {
+/**
+ * A login screen that offers login via email/password.
+ */
+public class LoginActivity extends BaseActivity {
+
 
     @Override
     public void setupComponent() {
@@ -22,7 +27,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_main;
+        return R.layout.activity_login;
     }
 
     @Override
@@ -45,8 +50,9 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    public void back(View view) {
-        finish();
-
+    @OnClick(R.id.email_sign_in_button)
+    public void signin(View view) {
+        startActivityV(null, MainActivity.class);
     }
 }
+

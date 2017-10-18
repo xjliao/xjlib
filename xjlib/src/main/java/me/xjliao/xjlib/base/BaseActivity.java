@@ -37,7 +37,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected String title;
 
-    // Refer fragment class
     protected FragmentManager fm;
 
     protected FragmentTransaction fragmentTransaction;
@@ -45,6 +44,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Fragment currentFragment;
 
     protected Boolean isDisplayHomeAsUpEnabled = true;
+
+    protected boolean v;
+
+    protected boolean h;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +116,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    //Init toolbar
     public void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -130,9 +132,60 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void startActivityX(Intent intent) {
+    public void startActivityH(Intent intent, Class cls) {
+        h = true;
+
+        if (intent == null) {
+            intent = new Intent();
+        }
+
+        if (cls != null) {
+            intent.setClass(this, cls);
+        }
+
         startActivity(intent);
-        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+    }
+
+    public void startActivityForResultH(Intent intent, Class cls, int requestCode) {
+        h = true;
+
+        if (intent == null) {
+            intent = new Intent();
+        }
+
+        if (cls != null) {
+            intent.setClass(this, cls);
+        }
+
+        startActivityForResult(intent, requestCode);
+    }
+
+    public void startActivityV(Intent intent, Class cls) {
+        v = true;
+
+        if (intent == null) {
+            intent = new Intent();
+        }
+
+        if (cls != null) {
+            intent.setClass(this, cls);
+        }
+
+        startActivity(intent);
+    }
+
+    public void startActivityForResultV(Intent intent, Class cls, int requestCode) {
+        v = true;
+
+        if (intent == null) {
+            intent = new Intent();
+        }
+
+        if (cls != null) {
+            intent.setClass(this, cls);
+        }
+
+        startActivityForResult(intent, requestCode);
     }
 
     @Override
@@ -147,17 +200,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         // Handle your other action bar items...
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
-    }
-
-    public void startActivityForResultX(Intent intent, int requestCode) {
-        startActivityForResult(intent, requestCode);
-        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
 
     public FragmentManager getFm() {
@@ -203,6 +245,33 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.title = title;
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (v) {
+            overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_down);
+        }
+
+        if (h) {
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (v) {
+            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
+        }
+
+        if (h) {
+            overridePendingTransition(R.anim.slede_in_right, R.anim.slide_out_right);
+        }
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -212,5 +281,4 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void destroyView() {
 
     }
-
 }

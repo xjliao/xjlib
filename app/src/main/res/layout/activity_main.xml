@@ -26,6 +26,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/back"
+        android:text="返回"
+        android:onClick="back"
         android:layout_width="300dp"
         android:background="@drawable/selector_oval_btn"
         android:layout_height="50dp" />
