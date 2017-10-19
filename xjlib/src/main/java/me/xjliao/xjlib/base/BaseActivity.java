@@ -49,6 +49,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected boolean h;
 
+    protected boolean d;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,8 +134,21 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    public void startActivityH(Class cls) {
+        h = true;
+        v = false;
+        Intent intent = new Intent();
+
+        if (cls != null) {
+            intent.setClass(this, cls);
+        }
+
+        startActivity(intent);
+    }
+
     public void startActivityH(Intent intent, Class cls) {
         h = true;
+        v = false;
 
         if (intent == null) {
             intent = new Intent();
@@ -147,7 +162,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void startActivityForResultH(Intent intent, Class cls, int requestCode) {
-        h = true;
+        v = true;
+        h = false;
 
         if (intent == null) {
             intent = new Intent();
@@ -160,8 +176,21 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivityForResult(intent, requestCode);
     }
 
+    public void startActivityV(Class cls) {
+        v = true;
+        h = false;
+        Intent intent = new Intent();
+
+        if (cls != null) {
+            intent.setClass(this, cls);
+        }
+
+        startActivity(intent);
+    }
+
     public void startActivityV(Intent intent, Class cls) {
         v = true;
+        h = false;
 
         if (intent == null) {
             intent = new Intent();
@@ -176,6 +205,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void startActivityForResultV(Intent intent, Class cls, int requestCode) {
         v = true;
+        h = false;
 
         if (intent == null) {
             intent = new Intent();
@@ -189,6 +219,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void startActivityX(Class cls) {
+        v = false;
+        h = false;
+
         Intent intent = new Intent();
 
         if (cls != null) {
@@ -199,6 +232,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void startActivityForResultX(Class cls, int requestCode) {
+        v = false;
+        h = false;
+
         Intent intent = new Intent();
 
         if (cls != null) {
@@ -209,6 +245,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void startActivityXI(Intent intent, Class cls) {
+        v = false;
+        h = false;
+
         if (intent == null) {
             intent = new Intent();
         }
@@ -221,6 +260,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void startActivityForResultXI(Intent intent, Class cls, int requestCode) {
+        v = false;
+        h = false;
+
         if (intent == null) {
             intent = new Intent();
         }

@@ -57,7 +57,17 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.email_sign_in_button)
     public void signin(View view) {
+        startActivityX(MainActivity.class);
+    }
+
+    @OnClick(R.id.t1)
+    public void t1(View view) {
         startActivityV(null, MainActivity.class);
+    }
+
+    @OnClick(R.id.t2)
+    public void t2(View view) {
+        startActivityH(null, MainActivity.class);
     }
 }
 
