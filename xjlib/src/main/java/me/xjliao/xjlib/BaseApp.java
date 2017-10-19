@@ -2,9 +2,9 @@
  * Copyright (c) 2017 xjliao.me created by xjliao
  * ProjectName: xjl
  * ModuleName: xjlib
- * FileName: App.java
- * ClassName: App
- * LastModified: 10/11/17 2:43 PM
+ * FileName: BaseApp.java
+ * ClassName: BaseApp
+ * LastModified: 10/11/17 3:59 PM
  */
 
 package me.xjliao.xjlib;

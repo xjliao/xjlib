@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: xjlib
+  ~ FileName: slide_in_up.xml
+  ~ ClassName: slide_in_up.xml
+  ~ LastModified: 10/18/17 3:52 PM
+  -->
+
 <translate xmlns:android="http://schemas.android.com/apk/res/android"
     android:duration="@android:integer/config_longAnimTime"
     android:fromYDelta="100%p"

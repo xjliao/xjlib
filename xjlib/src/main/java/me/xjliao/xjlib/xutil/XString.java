@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: XString.java
  * ClassName: XString
- * LastModified: 10/11/17 11:35 AM
+ * LastModified: 10/11/17 2:36 PM
  */
 
 package me.xjliao.xjlib.xutil;

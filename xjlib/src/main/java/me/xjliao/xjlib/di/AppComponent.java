@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: AppComponent.java
  * ClassName: AppComponent
- * LastModified: 10/11/17 11:34 AM
+ * LastModified: 10/11/17 2:36 PM
  */
 
 package me.xjliao.xjlib.di;

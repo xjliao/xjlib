@@ -1,3 +1,12 @@
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: app
+  ~ FileName: activity_login.xml
+  ~ ClassName: activity_login.xml
+  ~ LastModified: 10/18/17 3:14 PM
+  -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"

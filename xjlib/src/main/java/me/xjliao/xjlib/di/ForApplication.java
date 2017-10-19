@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: ForApplication.java
  * ClassName: ForApplication
- * LastModified: 10/11/17 11:35 AM
+ * LastModified: 10/11/17 2:36 PM
  */
 
 package me.xjliao.xjlib.di;

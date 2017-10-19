@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: BaseActivity.java
  * ClassName: BaseActivity
- * LastModified: 10/11/17 2:30 PM
+ * LastModified: 10/18/17 5:32 PM
  */
 
 package me.xjliao.xjlib.base;

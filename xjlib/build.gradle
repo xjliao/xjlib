@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2017 xjliao.me created by xjliao
+ * ProjectName: xjl
+ * ModuleName: xjlib
+ * FileName: build.gradle
+ * ClassName: build.gradle
+ * LastModified: 10/17/17 5:09 PM
+ */
+
 apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.jakewharton.butterknife'

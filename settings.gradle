@@ -4,7 +4,7 @@
  * ModuleName: xjl
  * FileName: settings.gradle
  * ClassName: settings.gradle
- * LastModified: 10/11/17 10:58 AM
+ * LastModified: 10/11/17 4:56 PM
  */
 
 include ':app', ':xjlib'

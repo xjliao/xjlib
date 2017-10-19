@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: bintray.gradle
  * ClassName: bintray.gradle
- * LastModified: 10/17/17 3:19 PM
+ * LastModified: 10/17/17 5:09 PM
  */
 
 apply plugin: 'com.jfrog.bintray'

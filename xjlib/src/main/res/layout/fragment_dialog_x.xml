@@ -1,10 +1,10 @@
 <!--
-  ~ Copyright (c) 2016 gzmhxx.com created by xjl
-  ~ ProjectName: Doctor
-  ~ ModuleName: app
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: xjlib
   ~ FileName: fragment_dialog_x.xml
   ~ ClassName: fragment_dialog_x.xml
-  ~ LastModified: 16-11-11 上午10:49
+  ~ LastModified: 2/5/17 8:27 PM
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -3,9 +3,9 @@
   ~ Copyright (c) 2017 xjliao.me created by xjliao
   ~ ProjectName: xjl
   ~ ModuleName: xjlib
-  ~ FileName: selector_val_btn.xml
-  ~ ClassName: selector_val_btn.xml
-  ~ LastModified: 10/11/17 2:29 PM
+  ~ FileName: selector_oval_btn.xml
+  ~ ClassName: selector_oval_btn.xml
+  ~ LastModified: 10/17/17 9:59 AM
   -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
