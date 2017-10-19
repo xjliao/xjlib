@@ -9,7 +9,6 @@
 
 package me.xjliao.xjlib.base;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,16 +20,18 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import me.xjliao.xjlib.R;
 import me.xjliao.xjlib.common.Constants;
 
 public abstract class BaseFragment extends Fragment {
+
+    protected static final String ARG_TITLE = "title";
+
+    protected static final String ARG_INDEX = "index";
 
     protected FragmentManager mFm;
 
     protected ActionBar mActionBar;
 
-    // TODO: Rename and change types of parameters
     protected String mTitle;
 
     protected int mIndex;
@@ -147,15 +148,4 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public abstract void destroyView();
-
-    public void startActivityX(Intent intent) {
-        getActivity().startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
-    }
-
-    public void startActivityForResultX(Intent intent, int requestCode) {
-        getActivity().startActivityForResult(intent, requestCode);
-        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
-    }
-
 }

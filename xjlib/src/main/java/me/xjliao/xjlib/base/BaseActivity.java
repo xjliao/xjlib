@@ -12,9 +12,6 @@ package me.xjliao.xjlib.base;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,8 +19,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
-import me.xjliao.xjlib.common.Constants;
 import me.xjliao.xjlib.R;
+import me.xjliao.xjlib.common.Constants;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -37,19 +34,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected String title;
 
-    protected FragmentManager fm;
-
-    protected FragmentTransaction fragmentTransaction;
-
-    protected Fragment currentFragment;
-
     protected Boolean isDisplayHomeAsUpEnabled = true;
 
     protected boolean v;
 
     protected boolean h;
-
-    protected boolean d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +83,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Init
      */
     protected void init() {
-        initReferFragment();
         initIntent();
         initData();
         initTitle();
@@ -102,10 +90,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         initViews();
         initAdapters();
         initListeners();
-    }
-
-    protected void initReferFragment() {
-        fm = getSupportFragmentManager();
     }
 
     protected void initIntent() {
@@ -286,30 +270,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         // Handle your other action bar items...
         return super.onOptionsItemSelected(item);
-    }
-
-    public FragmentManager getFm() {
-        return fm;
-    }
-
-    public void setFm(FragmentManager fm) {
-        this.fm = fm;
-    }
-
-    public FragmentTransaction getFragmentTransaction() {
-        return fragmentTransaction;
-    }
-
-    public void setFragmentTransaction(FragmentTransaction fragmentTransaction) {
-        this.fragmentTransaction = fragmentTransaction;
-    }
-
-    public Fragment getCurrentFragment() {
-        return currentFragment;
-    }
-
-    public void setCurrentFragment(Fragment currentFragment) {
-        this.currentFragment = currentFragment;
     }
 
     public String getXTitle() {
