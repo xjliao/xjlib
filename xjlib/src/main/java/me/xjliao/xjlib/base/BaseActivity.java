@@ -33,7 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected TextView titleTV;
 
-    protected Intent intent;
+    protected Intent gintent;
 
     protected String title;
 
@@ -107,12 +107,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void initIntent() {
-        intent = getIntent();
+        gintent = getIntent();
     }
 
     protected void initTitle() {
         if (title == null) {
-            title = intent.getStringExtra(Constants.TITLE);
+            title = gintent.getStringExtra(Constants.TITLE);
         }
     }
 
@@ -177,6 +177,50 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void startActivityForResultV(Intent intent, Class cls, int requestCode) {
         v = true;
 
+        if (intent == null) {
+            intent = new Intent();
+        }
+
+        if (cls != null) {
+            intent.setClass(this, cls);
+        }
+
+        startActivityForResult(intent, requestCode);
+    }
+
+    public void startActivityX(Class cls) {
+        Intent intent = new Intent();
+
+        if (cls != null) {
+            intent.setClass(this, cls);
+        }
+
+        startActivity(intent);
+    }
+
+    public void startActivityForResultX(Class cls, int requestCode) {
+        Intent intent = new Intent();
+
+        if (cls != null) {
+            intent.setClass(this, cls);
+        }
+
+        startActivityForResult(intent, requestCode);
+    }
+
+    public void startActivityXI(Intent intent, Class cls) {
+        if (intent == null) {
+            intent = new Intent();
+        }
+
+        if (cls != null) {
+            intent.setClass(this, cls);
+        }
+
+        startActivity(intent);
+    }
+
+    public void startActivityForResultXI(Intent intent, Class cls, int requestCode) {
         if (intent == null) {
             intent = new Intent();
         }
@@ -278,7 +322,5 @@ public abstract class BaseActivity extends AppCompatActivity {
         destroyView();
     }
 
-    public void destroyView() {
-
-    }
+    public abstract void destroyView();
 }

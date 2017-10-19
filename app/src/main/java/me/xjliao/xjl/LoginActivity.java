@@ -50,6 +50,11 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void destroyView() {
+
+    }
+
     @OnClick(R.id.email_sign_in_button)
     public void signin(View view) {
         startActivityV(null, MainActivity.class);

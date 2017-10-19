@@ -45,6 +45,11 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void destroyView() {
+
+    }
+
     public void back(View view) {
         finish();
 
