@@ -272,7 +272,7 @@
     <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>
     <!--<color name="divider">#B6B6B6</color>-->
-    <color name="primary_bg">#F5F5F9</color>
+    <color name="primary_bg">#EAEEEF</color>
 
     <color name="btn_enabled_false">#EBEBF0</color>
     <color name="btn_enabled_false_text">#D2D2D2</color>
