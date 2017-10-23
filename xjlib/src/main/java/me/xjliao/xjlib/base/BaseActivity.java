@@ -301,7 +301,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
         if (h) {
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+            overridePendingTransition(R.anim.slede_in_right, R.anim.slide_out_right);
         }
     }
 
@@ -314,7 +314,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
         if (h) {
-            overridePendingTransition(R.anim.slede_in_right, R.anim.slide_out_right);
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+
         }
     }
 
