@@ -28,6 +28,7 @@ android {
         versionName version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -36,7 +37,7 @@ android {
             debuggable true
             buildConfigField "boolean", "LOG_DEBUG", "true"
             buildConfigField "String", "HOST", "\"121.43.162.245\""
-            buildConfigField "int", "PORT", "8080"
+            buildConfigField "int", "PORT", "80"
         }
 
         release {
@@ -46,7 +47,7 @@ android {
             debuggable false
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField "String", "HOST", "\"121.43.162.245\""
-            buildConfigField "int", "PORT", "8080"
+            buildConfigField "int", "PORT", "80"
         }
     }
 }
