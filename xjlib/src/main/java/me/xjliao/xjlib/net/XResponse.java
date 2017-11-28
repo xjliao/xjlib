@@ -46,7 +46,3 @@ public class XResponse<T> {
         this.content = content;
     }
 }
-
-
-
-
