@@ -19,7 +19,7 @@ public class XResponse<T> {
     @SerializedName("msg")
     private String msg;
 
-    @SerializedName("content")
+    @SerializedName("obj")
     private T content;
 
     public int getCode() {

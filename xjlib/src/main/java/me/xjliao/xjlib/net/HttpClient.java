@@ -28,7 +28,9 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 public class HttpClient {
 
-    private static long TIMEOUT = 15;
+    private static long TIMEOUT = 20;
+
+    public static final String BASE_URL = "http://" + BuildConfig.HOST + ":" + BuildConfig.PORT + "/";
 
     private static HttpClient INSTANCE = null;
 
@@ -37,7 +39,7 @@ public class HttpClient {
     public static HttpClient getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new HttpClient();
-            //Http log interceptor
+            // Http log interceptor
             HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
 
             // Set log level
@@ -47,7 +49,7 @@ public class HttpClient {
                 logInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
             }
 
-            //Http client
+            // Http client
             OkHttpClient httpClient = new OkHttpClient.Builder()
                     .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
                     .readTimeout(TIMEOUT, TimeUnit.SECONDS)
@@ -69,7 +71,7 @@ public class HttpClient {
 
             // Build retrofit
             RETROFIT = new Retrofit.Builder()
-                    .baseUrl(HttpUrl.BASE_URL)
+                    .baseUrl(BASE_URL)
                     .client(httpClient)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addConverterFactory(SimpleXmlConverterFactory.create())
