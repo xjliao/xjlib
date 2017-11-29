@@ -9,18 +9,18 @@
 
 package me.xjliao.xjlib.net;
 
-import com.google.gson.annotations.SerializedName;
-
 public class XResponse<T> {
 
-    @SerializedName("code")
     private int code;
 
-    @SerializedName("msg")
     private String msg;
 
-    @SerializedName("obj")
-    private T content;
+    private T obj;
+
+    public XResponse(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
 
     public int getCode() {
         return code;
@@ -38,11 +38,11 @@ public class XResponse<T> {
         this.msg = msg;
     }
 
-    public T getContent() {
-        return content;
+    public T getObj() {
+        return obj;
     }
 
-    public void setContent(T content) {
-        this.content = content;
+    public void setObj(T obj) {
+        this.obj = obj;
     }
 }

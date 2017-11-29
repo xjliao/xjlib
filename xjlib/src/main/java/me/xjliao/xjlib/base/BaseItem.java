@@ -9,14 +9,11 @@
 
 package me.xjliao.xjlib.base;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by xjliao on 2016/10/11.
  */
 public class BaseItem {
 
-    @SerializedName("fid")
     private long id;
 
     public long getId() {

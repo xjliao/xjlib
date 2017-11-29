@@ -20,17 +20,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by xjliao on 2016/7/30.
- */
-public abstract class XCallback<T> implements Callback<T> {
+public abstract class XCallback<T> implements Callback<XResponse<T>> {
 
     private static final String LOG_TAG = XCallback.class.getSimpleName();
 
     @Override
-    public void onResponse(Call<T> call, Response<T> response) {
+    public void onResponse(Call<XResponse<T>> call, Response<XResponse<T>> response) {
         if (response.isSuccessful()) {
-            onResponse(response.body());
+            XResponse<T> xResponse = response.body();
+            if (xResponse.getCode() == XResponseStatus.SUCCESS.getCode()) {
+                onSuccess(xResponse.getObj());
+            } else {
+                onFailure(xResponse);
+            }
         } else {
             if (BuildConfig.LOG_DEBUG) {
                 try {
@@ -42,21 +44,24 @@ public abstract class XCallback<T> implements Callback<T> {
                 }
             }
 
-            onFailure("请求失败");
+            onFailure(new XResponse(response.code(), "请求失败"));
         }
+
     }
 
     @Override
-    public void onFailure(Call<T> call, Throwable t) {
+    public void onFailure(Call<XResponse<T>> call, Throwable t) {
+        XResponse failureResponse = new XResponse(10000, "请求失败");
         if (BuildConfig.LOG_DEBUG) {
             Log.e(LOG_TAG, t.toString());
         }
 
-        onFailure("请求失败");
+        onFailure(failureResponse);
+        XToast.showShortMsg(BaseApp.getAppContext(), failureResponse.getMsg());
     }
-    public abstract void onResponse(T response);
 
-    public void onFailure(String msg) {
-        XToast.showShortMsg(BaseApp.getAppContext(), msg);
-    }
+    public abstract void onSuccess(T obj);
+
+    public abstract void onFailure(XResponse failureResponse);
+
 }

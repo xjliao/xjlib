@@ -9,6 +9,8 @@
 
 package me.xjliao.xjlib.listener;
 
+import me.xjliao.xjlib.net.XResponse;
+
 /**
  * Created by xjl on 2016/1/14.
  */
@@ -16,6 +18,6 @@ public interface OnResponseListener<T> {
 
     void onSuccess(T t);
 
-    void onFailure(String msg);
+    void onFailure(XResponse failureResponse);
 
 }

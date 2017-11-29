@@ -9,15 +9,11 @@
 
 package me.xjliao.xjlib.net;
 
-import com.google.gson.annotations.SerializedName;
+public class XPaginationData<T> {
 
-public class XContent<T> {
-
-    @SerializedName("Data")
     private T data;
 
-    @SerializedName("Paging")
-    private Pagination pagination;
+    private XPagination pagination;
 
     public T getData() {
         return data;
@@ -27,11 +23,11 @@ public class XContent<T> {
         this.data = data;
     }
 
-    public Pagination getPagination() {
+    public XPagination getPagination() {
         return pagination;
     }
 
-    public void setPagination(Pagination pagination) {
+    public void setPagination(XPagination pagination) {
         this.pagination = pagination;
     }
 }

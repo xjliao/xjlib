@@ -14,6 +14,20 @@ apply plugin: 'com.jakewharton.butterknife'
 version = "1.0.0"
 
 android {
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+
     lintOptions {
         abortOnError false
     }
@@ -36,8 +50,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             debuggable true
             buildConfigField "boolean", "LOG_DEBUG", "true"
-            buildConfigField "String", "HOST", "\"121.43.162.245\""
-            buildConfigField "int", "PORT", "80"
+            buildConfigField "String", "HOST", ""
+            buildConfigField "int", "PORT", ""
         }
 
         release {
@@ -46,8 +60,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             debuggable false
             buildConfigField "boolean", "LOG_DEBUG", "false"
-            buildConfigField "String", "HOST", "\"121.43.162.245\""
-            buildConfigField "int", "PORT", "80"
+            buildConfigField "String", "HOST", ""
+            buildConfigField "int", "PORT", ""
         }
     }
 }
@@ -63,14 +77,12 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
-    compile('com.squareup.retrofit2:converter-simplexml:2.1.0') {
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    compile('com.squareup.retrofit2:converter-simplexml:2.3.0') {
         exclude module: 'stax-api'
     }
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    compile 'com.google.code.gson:gson:2.7'
     compile 'com.google.dagger:dagger:2.5'
     apt 'com.google.dagger:dagger-compiler:2.5'
     compile 'com.jakewharton:butterknife:8.8.1'

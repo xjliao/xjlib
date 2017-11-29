@@ -9,26 +9,18 @@
 
 package me.xjliao.xjlib.net;
 
-import com.google.gson.annotations.SerializedName;
+public class XPagination {
 
-public class Pagination {
-
-    @SerializedName("CurrentPageIndex")
     private int currentPageIndex;
 
-    @SerializedName("EndRecordIndex")
     private int endRecordIndex;
 
-    @SerializedName("PageSize")
     private int pageSize;
 
-    @SerializedName("StartRecordIndex")
     private int startRecordIndex;
 
-    @SerializedName("TotalItemCount")
     private int totalItemCount;
 
-    @SerializedName("TotalPageCount")
     private int totalPageCount;
 
     public int getCurrentPageIndex() {
