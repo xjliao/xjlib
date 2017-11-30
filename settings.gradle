@@ -3,8 +3,8 @@
  * ProjectName: xjl
  * ModuleName: xjl
  * FileName: settings.gradle
- * ClassName: settings.gradle
- * LastModified: 10/11/17 4:56 PM
+ * ClassName: settings
+ * LastModified: 10/19/17 8:50 AM
  */
 
 include ':app', ':xjlib'

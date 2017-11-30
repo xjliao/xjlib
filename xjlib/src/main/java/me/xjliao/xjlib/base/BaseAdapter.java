@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: BaseAdapter.java
  * ClassName: BaseAdapter
- * LastModified: 10/11/17 3:33 PM
+ * LastModified: 10/19/17 8:50 AM
  */
 
 package me.xjliao.xjlib.base;

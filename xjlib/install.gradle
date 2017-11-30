@@ -3,8 +3,8 @@
  * ProjectName: xjl
  * ModuleName: xjlib
  * FileName: install.gradle
- * ClassName: install.gradle
- * LastModified: 10/17/17 5:12 PM
+ * ClassName: install
+ * LastModified: 10/19/17 8:50 AM
  */
 
 apply plugin: 'com.github.dcendents.android-maven'

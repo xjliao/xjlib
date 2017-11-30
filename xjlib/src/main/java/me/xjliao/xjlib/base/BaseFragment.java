@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: BaseFragment.java
  * ClassName: BaseFragment
- * LastModified: 10/18/17 4:06 PM
+ * LastModified: 10/19/17 2:21 PM
  */
 
 package me.xjliao.xjlib.base;

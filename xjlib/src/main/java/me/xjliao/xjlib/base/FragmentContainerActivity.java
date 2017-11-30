@@ -2,9 +2,9 @@
  * Copyright (c) 2017 xjliao.me created by xjliao
  * ProjectName: xjl
  * ModuleName: xjlib
- * FileName: ContainFragmentActivity.java
- * ClassName: ContainFragmentActivity
- * LastModified: 10/19/17 11:04 AM
+ * FileName: FragmentContainerActivity.java
+ * ClassName: FragmentContainerActivity
+ * LastModified: 10/23/17 3:22 PM
  */
 
 package me.xjliao.xjlib.base;

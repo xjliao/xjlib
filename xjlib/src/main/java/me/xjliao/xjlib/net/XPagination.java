@@ -2,9 +2,9 @@
  * Copyright (c) 2017 xjliao.me created by xjliao
  * ProjectName: xjl
  * ModuleName: xjlib
- * FileName: Pagination.java
- * ClassName: Pagination
- * LastModified: 10/11/17 2:36 PM
+ * FileName: XPagination.java
+ * ClassName: XPagination
+ * LastModified: 11/29/17 9:43 AM
  */
 
 package me.xjliao.xjlib.net;

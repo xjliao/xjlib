@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: XResponse.java
  * ClassName: XResponse
- * LastModified: 10/11/17 2:36 PM
+ * LastModified: 11/29/17 9:33 AM
  */
 
 package me.xjliao.xjlib.net;

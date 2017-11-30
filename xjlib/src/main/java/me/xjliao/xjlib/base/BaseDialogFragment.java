@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: BaseDialogFragment.java
  * ClassName: BaseDialogFragment
- * LastModified: 10/11/17 2:36 PM
+ * LastModified: 10/19/17 8:50 AM
  */
 
 package me.xjliao.xjlib.base;

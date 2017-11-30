@@ -2,9 +2,9 @@
  * Copyright (c) 2017 xjliao.me created by xjliao
  * ProjectName: xjl
  * ModuleName: xjlib
- * FileName: XContent.java
- * ClassName: XContent
- * LastModified: 10/11/17 2:36 PM
+ * FileName: XPaginationData.java
+ * ClassName: XPaginationData
+ * LastModified: 11/29/17 9:44 AM
  */
 
 package me.xjliao.xjlib.net;
