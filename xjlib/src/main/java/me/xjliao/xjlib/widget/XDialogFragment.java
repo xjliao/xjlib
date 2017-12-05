@@ -68,17 +68,14 @@ public class XDialogFragment extends BaseDialogFragment {
 
     @OnClick({R2.id.ok_tv, R2.id.cancel_tv})
     public void onClickAction(View view) {
-        switch (view.getId()) {
-            case R2.id.ok_tv:
-                mListener.onDialogPositiveClick(XDialogFragment.this);
-                this.dismissAllowingStateLoss();
-                break;
-            case R2.id.cancel_tv:
-                mListener.setNegativeClick(XDialogFragment.this);
-                this.dismissAllowingStateLoss();
-                break;
-            default:
-                break;
+        if (R.id.ok_tv == view.getId()) {
+            mListener.onDialogPositiveClick(XDialogFragment.this);
+            this.dismissAllowingStateLoss();
+        }
+
+        if (R.id.cancel_tv == view.getId()) {
+            mListener.setNegativeClick(XDialogFragment.this);
+            this.dismissAllowingStateLoss();
         }
     }
 
