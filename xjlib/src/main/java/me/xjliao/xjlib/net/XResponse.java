@@ -9,17 +9,29 @@
 
 package me.xjliao.xjlib.net;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class XResponse<T> {
 
     private int code;
 
+    @JsonProperty(value = "message")
     private String msg;
 
     private T obj;
 
+    public XResponse() {
+
+    }
+
     public XResponse(int code, String msg) {
         this.code = code;
         this.msg = msg;
+    }
+
+    public XResponse(int code, String msg, T obj) {
+        this(code, msg);
+        this.obj = obj;
     }
 
     public int getCode() {

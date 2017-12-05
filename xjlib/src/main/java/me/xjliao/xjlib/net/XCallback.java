@@ -14,7 +14,6 @@ import android.util.Log;
 import java.io.IOException;
 
 import me.xjliao.xjlib.BaseApp;
-import me.xjliao.xjlib.BuildConfig;
 import me.xjliao.xjlib.xutil.XToast;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,14 +33,12 @@ public abstract class XCallback<T> implements Callback<XResponse<T>> {
                 onFailure(xResponse);
             }
         } else {
-            if (BuildConfig.LOG_DEBUG) {
-                try {
-                    Log.e(LOG_TAG, response.code() + ":" + response.raw().request().url() + " - "
-                            + response.errorBody().string());
-                } catch (IOException e) {
-                    Log.e(LOG_TAG, response.code() + ":" + response.raw().request().url());
-                    e.printStackTrace();
-                }
+            try {
+                Log.e(LOG_TAG, response.code() + ":" + response.raw().request().url() + " - "
+                        + response.errorBody().string());
+            } catch (IOException e) {
+                Log.e(LOG_TAG, response.code() + ":" + response.raw().request().url());
+                e.printStackTrace();
             }
 
             onFailure(new XResponse(response.code(), "请求失败"));
@@ -52,10 +49,7 @@ public abstract class XCallback<T> implements Callback<XResponse<T>> {
     @Override
     public void onFailure(Call<XResponse<T>> call, Throwable t) {
         XResponse failureResponse = new XResponse(10000, "请求失败");
-        if (BuildConfig.LOG_DEBUG) {
-            Log.e(LOG_TAG, t.toString());
-        }
-
+        Log.e(LOG_TAG, t.toString());
         onFailure(failureResponse);
         XToast.showShortMsg(BaseApp.getAppContext(), failureResponse.getMsg());
     }
