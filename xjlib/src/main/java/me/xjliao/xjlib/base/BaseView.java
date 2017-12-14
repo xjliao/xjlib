@@ -16,6 +16,10 @@ public interface BaseView<T> {
 
     void success(T t);
 
+    void success(String tag, T t);
+
     void failure(String msg);
+
+    void failure(String tag, String msg);
 
 }

@@ -18,6 +18,10 @@ public interface OnResponseListener<T> {
 
     void onSuccess(T t);
 
+    void onSuccess(String tag, T t);
+
     void onFailure(XResponse failureResponse);
+
+    void onFailure(String tag, XResponse failureResponse);
 
 }
