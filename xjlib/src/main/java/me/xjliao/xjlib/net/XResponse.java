@@ -13,6 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class XResponse<T> {
 
+    public static final String DEFAULT = "DEFAULT";
+
     private int code;
 
     @JsonProperty(value = "message")
