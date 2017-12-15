@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: build.gradle
  * ClassName: build
- * LastModified: 11/30/17 4:36 PM
+ * LastModified: 11/30/17 4:39 PM
  */
 
 apply plugin: 'com.android.library'

@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: XProgressDialog.java
  * ClassName: XProgressDialog
- * LastModified: 12/5/17 3:09 PM
+ * LastModified: 12/5/17 3:19 PM
  */
 
 package me.xjliao.xjlib.widget;

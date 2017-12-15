@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: BaseItem.java
  * ClassName: BaseItem
- * LastModified: 11/29/17 11:03 AM
+ * LastModified: 11/30/17 4:39 PM
  */
 
 package me.xjliao.xjlib.base;

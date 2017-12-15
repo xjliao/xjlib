@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: XTime.java
  * ClassName: XTime
- * LastModified: 12/15/17 4:35 PM
+ * LastModified: 12/15/17 4:47 PM
  */
 
 package me.xjliao.xjlib.xutil;

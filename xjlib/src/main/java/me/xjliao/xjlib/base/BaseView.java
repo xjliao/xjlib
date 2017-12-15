@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: BaseView.java
  * ClassName: BaseView
- * LastModified: 10/19/17 8:50 AM
+ * LastModified: 12/14/17 11:29 AM
  */
 
 package me.xjliao.xjlib.base;

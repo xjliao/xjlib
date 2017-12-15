@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: HttpClient.java
  * ClassName: HttpClient
- * LastModified: 11/28/17 5:16 PM
+ * LastModified: 12/5/17 10:45 AM
  */
 
 package me.xjliao.xjlib.net;

@@ -2,9 +2,9 @@
  * Copyright (c) 2017 xjliao.me created by xjliao
  * ProjectName: xjl
  * ModuleName: xjlib
- * FileName: BasePresenterImpl.java
- * ClassName: BasePresenterImpl
- * LastModified: 10/19/17 8:50 AM
+ * FileName: BasePresenter.java
+ * ClassName: BasePresenter
+ * LastModified: 12/14/17 4:47 PM
  */
 
 package me.xjliao.xjlib.base;

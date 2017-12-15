@@ -4,7 +4,7 @@
  * ModuleName: xjlib
  * FileName: BaseInteractor.java
  * ClassName: BaseInteractor
- * LastModified: 10/19/17 8:50 AM
+ * LastModified: 11/30/17 4:39 PM
  */
 
 package me.xjliao.xjlib.base;
