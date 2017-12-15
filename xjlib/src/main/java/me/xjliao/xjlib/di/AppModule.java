@@ -9,6 +9,8 @@
 
 package me.xjliao.xjlib.di;
 
+import android.content.Context;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -21,6 +23,12 @@ import me.xjliao.xjlib.xutil.XSharedPreferences;
  */
 @Module
 public class AppModule {
+
+    @Provides
+    @Singleton
+    public Context providerContext() {
+        return BaseApp.getAppContext();
+    }
 
     @Provides
     @Singleton
