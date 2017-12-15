@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2017 xjliao.me created by xjliao
   ~ ProjectName: xjl
   ~ ModuleName: xjlib
@@ -17,8 +16,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:background="@color/primary_bg"
-        android:layout_height="12dp" />
+        android:layout_height="12dp"
+        android:background="@color/primary_bg" />
 
     <include layout="@layout/view_divider" />
 

@@ -40,6 +40,10 @@ public class BaseApp extends Application {
         return instance;
     }
 
+    public static void exit() {
+        System.exit(0);
+    }
+
     public void onCreate() {
         super.onCreate();
         applicationContext = this;
@@ -50,10 +54,6 @@ public class BaseApp extends Application {
         if (BuildConfig.DEBUG) {
             Picasso.with(this).setIndicatorsEnabled(true);
         }
-    }
-
-    public static void exit() {
-        System.exit(0);
     }
 
     @Override

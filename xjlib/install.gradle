@@ -12,7 +12,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 def siteUrl = 'https://github.com/xjliao/xjlib'
 def gitUrl = 'https://github.com/xjliao/xjlib.git'
 
-version  = '1.0.0'
+version = '1.0.0'
 
 install {
     repositories.mavenInstaller {
