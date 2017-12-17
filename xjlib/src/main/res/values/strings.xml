@@ -11,4 +11,6 @@
     <string name="app_name">xjlib</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
+    <string name="preActionText">处理中...</string>
+    <string name="login_ing">登录中...</string>
 </resources>

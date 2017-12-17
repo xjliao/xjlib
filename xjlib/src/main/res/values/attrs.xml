@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: xjlib
+  ~ FileName: attrs.xml
+  ~ ClassName: attrs.xml
+  ~ LastModified: 12/17/17 11:59 AM
+  -->
+<resources>
+    <declare-styleable name="XButton">
+        <attr name="preActionAble" format="boolean"/>
+        <attr name="preActionText" format="string"/>
+    </declare-styleable>
+</resources>
