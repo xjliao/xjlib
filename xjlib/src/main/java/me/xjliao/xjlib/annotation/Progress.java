@@ -26,7 +26,7 @@ public @interface Progress {
 
     boolean isDeployAble() default true;
 
-    boolean isDialogAble() default false;
+    boolean isDialogAble() default true;
 
     String beforeProgressMsg() default "即将处理";
 
