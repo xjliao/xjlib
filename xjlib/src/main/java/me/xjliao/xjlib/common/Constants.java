@@ -25,6 +25,8 @@ public class Constants {
 
     public static final String NAME = "NAME";
 
+    public static final String CODE = "CODE";
+
     public static final String FLAG = "FLAG";
 
     public static final String CONTENT = "CONTENT";
