@@ -15,8 +15,16 @@ package me.xjliao.xjlib.xutil;
 
 public class XTime {
 
-    public static long deloySeconds(double minSeconds, double maxSeconds) {
-        return new Double(minSeconds + (Math.random() * maxSeconds - minSeconds + 1) * 1000).longValue();
+    public static final double requestMinSeconds = 0.3;
+
+    public static final double requestMaxSeconds = 0.5;
+
+    public static long deployRequestSeconds() {
+        return new Double((requestMinSeconds + (Math.random() * (requestMaxSeconds - requestMinSeconds + 0.1))) * 1000).longValue();
+    }
+
+    public static long deploySeconds(double minSeconds, double maxSeconds) {
+        return new Double((minSeconds + (Math.random() * (maxSeconds - minSeconds + 0.1))) * 1000).longValue();
     }
 
 }
