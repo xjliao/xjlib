@@ -14,8 +14,8 @@ package me.xjliao.xjlib.listener;
  */
 public interface OnResponseListener<T> {
 
-    void onSuccess(String tag, int code, String msg, T t);
+    void onSuccess(int code, String msg, String tag, T t);
 
-    void onFailure(String tag, int code, String msg);
+    void onFailure(int code, String msg, String tag);
 
 }
