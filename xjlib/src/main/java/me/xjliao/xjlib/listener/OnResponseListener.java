@@ -9,15 +9,13 @@
 
 package me.xjliao.xjlib.listener;
 
-import me.xjliao.xjlib.net.XResponse;
-
 /**
  * Created by xjl on 2016/1/14.
  */
 public interface OnResponseListener<T> {
 
-    void onSuccess(String tag, T t);
+    void onSuccess(String tag, int code, String msg, T t);
 
-    void onFailure(String tag, XResponse failureResponse);
+    void onFailure(String tag, int code, String msg);
 
 }

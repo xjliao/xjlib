@@ -14,8 +14,8 @@ package me.xjliao.xjlib.base;
  */
 public interface BaseView<T> {
 
-    void success(String tag, T t);
+    void success(String tag, int code, String msg, T t);
 
-    void failure(String tag, String msg);
+    void failure(String tag, int code, String msg);
 
 }
