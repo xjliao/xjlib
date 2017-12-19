@@ -28,9 +28,9 @@ public abstract class XCallback<T> implements Callback<XResponse<T>> {
         if (response.isSuccessful()) {
             XResponse<T> xResponse = response.body();
             if (xResponse.getCode() == XResponseStatus.SUCCESS.getCode()) {
-                onSuccess(xResponse.getObj());
+                onSuccess(xResponse.getCode(), xResponse.getMsg(), xResponse.getObj());
             } else {
-                onFailure(xResponse);
+                onFailure(xResponse.getCode(), xResponse.getMsg());
             }
         } else {
             try {
@@ -41,7 +41,8 @@ public abstract class XCallback<T> implements Callback<XResponse<T>> {
                 e.printStackTrace();
             }
 
-            onFailure(new XResponse(response.code(), "请求失败"));
+            XResponse failureResponse = new XResponse(response.code(), "请求失败");
+            onFailure(failureResponse.getCode(), failureResponse.getMsg());
         }
 
     }
@@ -50,12 +51,12 @@ public abstract class XCallback<T> implements Callback<XResponse<T>> {
     public void onFailure(Call<XResponse<T>> call, Throwable t) {
         XResponse failureResponse = new XResponse(10000, "请求失败");
         Log.e(LOG_TAG, t.toString());
-        onFailure(failureResponse);
+        onFailure(failureResponse.getCode(), failureResponse.getMsg());
         XToast.showShortMsg(BaseApp.getAppContext(), failureResponse.getMsg());
     }
 
-    public abstract void onSuccess(T obj);
+    public abstract void onSuccess(int code, String msg, T obj);
 
-    public abstract void onFailure(XResponse failureResponse);
+    public abstract void onFailure(int code, String msg);
 
 }
