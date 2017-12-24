@@ -49,10 +49,11 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
+// Upload doc and source
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
 
 javadoc {
     options {
