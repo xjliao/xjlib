@@ -9,10 +9,13 @@
 
 package me.xjliao.xjl;
 
+import android.content.Intent;
 import android.view.View;
 
 import butterknife.OnClick;
 import me.xjliao.xjlib.base.BaseActivity;
+import me.xjliao.xjlib.base.BaseXWebActivity;
+import me.xjliao.xjlib.common.Constants;
 
 /**
  * A login screen that offers login via email/password.
@@ -62,7 +65,9 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.t1)
     public void t1(View view) {
-        startActivityV(null, MainActivity.class);
+        Intent intent = new Intent();
+        intent.putExtra(Constants.URL, "www.baidu.com");
+        startActivityV(null, BaseXWebActivity.class);
     }
 
     @OnClick(R.id.t2)
