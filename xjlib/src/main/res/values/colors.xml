@@ -11,6 +11,7 @@
     <!--<color name="colorPrimary">#2196F3</color>-->
     <!--<color name="colorPrimary">#2198F2</color>-->
     <color name="colorPrimary">#2198F2</color>
+    <color name="colorAuthentication">#1F90E6</color>
     <color name="colorPrimaryLogin">#3EBAFF</color>
     <!--<color name="colorPrimaryDark">#FF1976D2</color>-->
     <color name="colorPrimaryDark">#2185c5</color>
@@ -276,4 +277,13 @@
     <color name="btn_enabled_false">#EBEBF0</color>
     <color name="btn_enabled_false_text">#D2D2D2</color>
     <color name="primary_divider">#DDDDDD</color>
+
+    <!-- Fingerprint -->
+    <color name="warning_color">#f4511e</color>
+    <color name="hint_color">#42000000</color>
+    <color name="success_color">#009688</color>
+    <color name="fingerprint_success">#009688</color>
+    <color name="finerprint_error">#F4511E</color>
+    <color name="fingerprint_fill">#FFFFFF</color>
+    <color name="card_solid">#fefefe</color>
 </resources>

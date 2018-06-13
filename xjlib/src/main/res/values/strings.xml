@@ -13,4 +13,41 @@
     <string name="cancel">取消</string>
     <string name="preActionText">处理中...</string>
     <string name="login_ing">登录中...</string>
+
+    <!-- Fingerprint -->
+    <string name="auth_settings">指纹认证设置</string>
+    <string name="use_password">使用密码</string>
+    <string name="sign_in">登 录</string>
+    <string name="password">密码</string>
+    <string name="fingerprint_description">确认指纹继续</string>
+    <string name="fingerprint_hint">触摸指纹识别纹传感器</string>
+    <string name="password_description">输入登录密码继续</string>
+    <string name="fingerprint_not_support">当前手机系统不支持，至少系统版本6.0以上</string>
+    <string name="purchase">Purchase</string>
+    <string name="purchase_not_invalidated">Purchase not invalidated</string>
+    <string name="purchase_button_not_invalidated_description">
+        You can proceed to purchase with this button \n even if a new fingerprint is enrolled
+    </string>
+    <string name="fingerprint_not_recognized">指纹未能识别，请重试</string>
+    <string name="fingerprint_success">指纹已识别</string>
+    <string name="item_title">White Mesh Pluto Backpack</string>
+    <string name="item_description">Mesh backpack in white. Black textile trim throughout.</string>
+    <string name="purchase_done">Purchase successful</string>
+    <string name="new_fingerprint_enrolled_description">
+        设备添加了新的指纹，此次需要使用密码登录
+    </string>
+    <string name="use_fingerprint_in_future">以后使用指纹</string>
+    <string name="use_fingerprint_to_authenticate_title">开启指纹认证</string>
+    <string name="use_fingerprint_to_authenticate_key" >use_fingerprint_to_authenticate_key</string>
+    <string name="description_bugdroid_icon">Android bugdroid image</string>
+    <string name="description_fingerprint_icon">Fingerprint icon</string>
+    <string name="register_fingerprint">
+        手机系统未设置任何指纹.\n前往 \'设置 -> 安全 -> 指纹\' 录入至少一个指纹
+    </string>
+    <string name="setup_lock_screen">
+        安全锁屏未设置.\n前往 \'设置-> 安全 -> 指纹\' 设置指纹认证
+    </string>
+    <string name="click_to_fingerprint_unlock">
+        点击进行指纹解锁
+    </string>
 </resources>

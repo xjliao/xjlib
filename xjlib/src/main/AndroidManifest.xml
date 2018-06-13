@@ -11,6 +11,11 @@
 
     package="me.xjliao.xjlib">
 
+    <uses-permission
+        android:name="android.permission.USE_FINGERPRINT" />
+    <uses-feature android:name="android.hardware.fingerprint"
+        android:required="true"/>
+
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
