@@ -28,10 +28,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import me.xjliao.xjlib.R
 import me.xjliao.xjlib.common.Constants
 
@@ -167,6 +164,7 @@ class FingerprintAuthenticationDialogFragment : DialogFragment(),
      */
     private fun verifyPassword() {
         if (!checkPassword(passwordEditText.text.toString())) {
+            Toast.makeText(activity, "请输入密码", Toast.LENGTH_LONG).show()
             return
         }
         if (stage == Stage.NEW_FINGERPRINT_ENROLLED) {
@@ -185,9 +183,11 @@ class FingerprintAuthenticationDialogFragment : DialogFragment(),
         passwordEditText.setText("")
         callback.onAuthenticated(withFingerprint = false, password = password)
         dismiss()
+
         val intent = Intent()
         intent.putExtra(Constants.PASSWORD, password)
         activity.setResult(AUTH_SIGN_IN_WITH_PASSWORD, intent)
+        activity.finish()
     }
 
     /**
