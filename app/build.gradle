@@ -31,7 +31,7 @@ android {
         exclude 'META-INF/LGPL2.1'
     }
     compileSdkVersion 27
-    buildToolsVersion '27.0.1'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "me.xjliao.xjl"
         minSdkVersion 15
