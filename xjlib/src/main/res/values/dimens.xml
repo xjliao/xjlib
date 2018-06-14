@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="fingerprint_square_dimen">40dp</dimen>
-    <dimen name="fingerprint_square_dimen_viewport" type="float">40.0</dimen>
+    <!--<dimen name="fingerprint_square_dimen_viewport" type="float">40.0</dimen>-->
+    <item name="fingerprint_square_dimen_viewport" type="dimen" format="float">40.0</item>
     <dimen name="card_corner">2dp</dimen>
     <dimen name="default_elevation">4dp</dimen>
     <dimen name="logo_square_dimen">150dp</dimen>

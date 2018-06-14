@@ -99,7 +99,6 @@ class AuthSettingsActivity : BaseActivity() {
             auth_settings_text_view.text = getString(R.string.fingerprint_not_support)
             return false
         }
-        return true
     }
 
     override fun initAdapters() {
