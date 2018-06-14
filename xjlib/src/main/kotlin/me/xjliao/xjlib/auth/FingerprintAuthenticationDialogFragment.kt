@@ -183,11 +183,6 @@ class FingerprintAuthenticationDialogFragment : DialogFragment(),
         passwordEditText.setText("")
         callback.onAuthenticated(withFingerprint = false, password = password)
         dismiss()
-
-        val intent = Intent()
-        intent.putExtra(Constants.PASSWORD, password)
-        activity.setResult(AUTH_SIGN_IN_WITH_PASSWORD, intent)
-        activity.finish()
     }
 
     /**

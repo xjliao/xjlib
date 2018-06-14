@@ -1,6 +1,7 @@
 package me.xjliao.xjlib.auth
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.hardware.fingerprint.FingerprintManager
 import android.os.Build
@@ -17,7 +18,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_authentication.*
 import me.xjliao.xjlib.R
 import me.xjliao.xjlib.base.BaseActivity
-import me.xjliao.xjlib.ext.showToast
+import me.xjliao.xjlib.common.Constants
 import java.io.IOException
 import java.security.*
 import java.security.cert.CertificateException
@@ -185,7 +186,10 @@ class AuthenticationActivity : BaseActivity(),
             }
         } else {
             // Authentication happened with backup password. Just show the confirmation message.
-            showToast(password)
+            val intent = Intent()
+            intent.putExtra(Constants.PASSWORD, password)
+            setResult(AUTH_SIGN_IN_WITH_PASSWORD, intent)
+            finish()
         }
     }
 
