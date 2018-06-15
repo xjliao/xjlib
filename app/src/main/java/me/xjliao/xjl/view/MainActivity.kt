@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import me.xjliao.xjl.R
 import me.xjliao.xjlib.auth.*
 import me.xjliao.xjlib.base.BaseActivity
-import me.xjliao.xjlib.common.Constants
 import me.xjliao.xjlib.ext.showToast
 
 class MainActivity : BaseActivity() {
@@ -76,7 +75,7 @@ class MainActivity : BaseActivity() {
             if (AUTH_SIGN_IN_OTHER_ACCOUNT_RESULT_CODE == resultCode) {
                 showToast(requestCode.toString() + ":" + resultCode)
             } else if (AUTH_SIGN_IN_WITH_PASSWORD == resultCode) {
-                showToast("登录密码"+ data!!.getStringExtra(Constants.PASSWORD))
+                showToast("使用密码登录")
             }
         }
     }

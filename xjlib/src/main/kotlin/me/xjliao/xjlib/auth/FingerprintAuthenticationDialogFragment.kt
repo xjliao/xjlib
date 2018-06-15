@@ -36,30 +36,18 @@ import me.xjliao.xjlib.common.Constants
  * A dialog which uses fingerprint APIs to authenticate the user, and falls back to password
  * authentication if fingerprint is not available.
  */
-class FingerprintAuthenticationDialogFragment : DialogFragment(),
-        TextView.OnEditorActionListener,
-        FingerprintUiHelper.Callback {
+class FingerprintAuthenticationDialogFragment : DialogFragment(), FingerprintUiHelper.Callback {
 
-    private lateinit var backupContent: View
     private lateinit var cancelButton: Button
     private lateinit var fingerprintContainer: View
-    private lateinit var fingerprintEnrolledTextView: TextView
-    private lateinit var passwordDescriptionTextView: TextView
-    private lateinit var passwordEditText: EditText
     private lateinit var secondDialogButton: Button
-    private lateinit var useFingerprintFutureCheckBox: CheckBox
 
     private lateinit var callback: Callback
     private lateinit var cryptoObject: FingerprintManager.CryptoObject
     private lateinit var fingerprintUiHelper: FingerprintUiHelper
-    private lateinit var inputMethodManager: InputMethodManager
     private lateinit var sharedPreferences: SharedPreferences
 
     private var stage = Stage.FINGERPRINT
-
-    private val showKeyboardRunnable = Runnable {
-        inputMethodManager.showSoftInput(passwordEditText, 0)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,19 +68,13 @@ class FingerprintAuthenticationDialogFragment : DialogFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        backupContent = view.findViewById(R.id.backup_container)
         cancelButton = view.findViewById(R.id.cancel_button)
         fingerprintContainer = view.findViewById(R.id.fingerprint_container)
-        fingerprintEnrolledTextView = view.findViewById(R.id.new_fingerprint_enrolled_description)
-        passwordDescriptionTextView = view.findViewById(R.id.password_description)
-        passwordEditText = view.findViewById(R.id.password)
         secondDialogButton = view.findViewById(R.id.second_dialog_button)
-        useFingerprintFutureCheckBox = view.findViewById(R.id.use_fingerprint_in_future_check)
 
         cancelButton.setOnClickListener { dismiss() }
-        passwordEditText.setOnEditorActionListener(this)
         secondDialogButton.setOnClickListener {
-            if (stage == Stage.FINGERPRINT) goToBackup() else verifyPassword()
+            usePassword()
         }
 
         fingerprintUiHelper = FingerprintUiHelper(
@@ -106,7 +88,7 @@ class FingerprintAuthenticationDialogFragment : DialogFragment(),
         // If fingerprint authentication is not available, switch immediately to the backup
         // (password) screen.
         if (!fingerprintUiHelper.isFingerprintAuthAvailable) {
-            goToBackup()
+            usePassword()
         }
     }
     override fun onResume() {
@@ -123,7 +105,6 @@ class FingerprintAuthenticationDialogFragment : DialogFragment(),
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        inputMethodManager = context.getSystemService(InputMethodManager::class.java)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
     }
 
@@ -139,61 +120,16 @@ class FingerprintAuthenticationDialogFragment : DialogFragment(),
         this.stage = stage
     }
 
-    /**
-     * Switches to backup (password) screen. This either can happen when fingerprint is not
-     * available or the user chooses to use the password authentication method by pressing the
-     * button. This can also happen when the user has too many invalid fingerprint attempts.
-     */
-    private fun goToBackup() {
-        stage = Stage.PASSWORD
+    private fun usePassword() {
+        // Re-create the key so that fingerprints including new ones are validated.
+        callback.createKey(DEFAULT_KEY_NAME)
+        stage = Stage.FINGERPRINT
         updateStage()
-        passwordEditText.run {
-            requestFocus()
-
-            // Show the keyboard.
-            postDelayed(showKeyboardRunnable, 500)
-        }
-
         // Fingerprint is not used anymore. Stop listening for it.
         fingerprintUiHelper.stopListening()
-    }
-
-    /**
-     * Checks whether the current entered password is correct, and dismisses the dialog and
-     * informs the activity about the result.
-     */
-    private fun verifyPassword() {
-        if (!checkPassword(passwordEditText.text.toString())) {
-            Toast.makeText(activity, "请输入密码", Toast.LENGTH_LONG).show()
-            return
-        }
-        if (stage == Stage.NEW_FINGERPRINT_ENROLLED) {
-            sharedPreferences.edit()
-                    .putBoolean(getString(R.string.use_fingerprint_to_authenticate_key),
-                            useFingerprintFutureCheckBox.isChecked)
-                    .apply()
-
-            if (useFingerprintFutureCheckBox.isChecked) {
-                // Re-create the key so that fingerprints including new ones are validated.
-                callback.createKey(DEFAULT_KEY_NAME)
-                stage = Stage.FINGERPRINT
-            }
-        }
-        val password = passwordEditText.text.toString()
-        passwordEditText.setText("")
-        callback.onAuthenticated(withFingerprint = false, password = password)
+        callback.onAuthenticated(withFingerprint = false, usePassword = true)
         dismiss()
     }
-
-    /**
-     * Checks if the given password is valid. Assume that the password is always correct.
-     * In a real world situation, the password needs to be verified via the server.
-     *
-     * @param password The password String
-     *
-     * @return true if `password` is correct, false otherwise
-     */
-    private fun checkPassword(password: String) = password.isNotEmpty()
 
     private fun updateStage() {
         when (stage) {
@@ -201,41 +137,38 @@ class FingerprintAuthenticationDialogFragment : DialogFragment(),
                 cancelButton.setText(R.string.cancel)
                 secondDialogButton.setText(R.string.use_password)
                 fingerprintContainer.visibility = View.VISIBLE
-                backupContent.visibility = View.GONE
             }
-            Stage.NEW_FINGERPRINT_ENROLLED, // Intentional fall through
-            Stage.PASSWORD -> {
-                cancelButton.setText(R.string.cancel)
-                secondDialogButton.setText(R.string.ok)
-                fingerprintContainer.visibility = View.GONE
-                backupContent.visibility = View.VISIBLE
-                if (stage == Stage.NEW_FINGERPRINT_ENROLLED) {
-                    passwordDescriptionTextView.visibility = View.GONE
-                    fingerprintEnrolledTextView.visibility = View.VISIBLE
-                    useFingerprintFutureCheckBox.visibility = View.VISIBLE
-                }
-            }
+            Stage.NEW_FINGERPRINT_ENROLLED -> {
+                Toast.makeText(activity, "设备指纹有变化，需要密码重新登录。", Toast.LENGTH_LONG).show()
+                usePassword()
+            } // Intentional fall through
+//            Stage.PASSWORD -> {
+//                cancelButton.setText(R.string.cancel)
+//                secondDialogButton.setText(R.string.ok)
+//                fingerprintContainer.visibility = View.GONE
+//                backupContent.visibility = View.VISIBLE
+//                if (stage == Stage.NEW_FINGERPRINT_ENROLLED) {
+//                    passwordDescriptionTextView.visibility = View.GONE
+//                    fingerprintEnrolledTextView.visibility = View.VISIBLE
+//                }
+//            }
         }
-    }
-
-    override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent?): Boolean {
-        return if (actionId == EditorInfo.IME_ACTION_GO) { verifyPassword(); true } else false
     }
 
     override fun onAuthenticated() {
         // Callback from FingerprintUiHelper. Let the activity know that authentication succeeded.
-        callback.onAuthenticated(withFingerprint = true, crypto = cryptoObject)
+        callback.onAuthenticated(withFingerprint = true, crypto = cryptoObject, usePassword = false)
         dismiss()
     }
 
     override fun onError() {
-        goToBackup()
+        usePassword()
     }
 
     interface Callback {
         fun onAuthenticated(withFingerprint: Boolean,
                              crypto: FingerprintManager.CryptoObject? = null,
-                             password: String? = null)
+                            usePassword: Boolean?= false)
         fun createKey(keyName: String, invalidatedByBiometricEnrollment: Boolean = true)
     }
 }

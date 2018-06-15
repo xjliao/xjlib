@@ -1,7 +1,6 @@
 package me.xjliao.xjlib.auth
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.hardware.fingerprint.FingerprintManager
 import android.os.Build
@@ -18,7 +17,6 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_authentication.*
 import me.xjliao.xjlib.R
 import me.xjliao.xjlib.base.BaseActivity
-import me.xjliao.xjlib.common.Constants
 import java.io.IOException
 import java.security.*
 import java.security.cert.CertificateException
@@ -177,7 +175,7 @@ class AuthenticationActivity : BaseActivity(),
      */
     override fun onAuthenticated(withFingerprint: Boolean,
                                   crypto: FingerprintManager.CryptoObject?,
-                                  password: String?) {
+                                  usePassword: Boolean?) {
         if (withFingerprint) {
             // If the user authenticated with fingerprint, verify using cryptography and then show
             // the confirmation message.
@@ -186,9 +184,7 @@ class AuthenticationActivity : BaseActivity(),
             }
         } else {
             // Authentication happened with backup password. Just show the confirmation message.
-            val intent = Intent()
-            intent.putExtra(Constants.PASSWORD, password)
-            setResult(AUTH_SIGN_IN_WITH_PASSWORD, intent)
+            setResult(AUTH_SIGN_IN_WITH_PASSWORD)
             finish()
         }
     }
