@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: app
+  ~ FileName: activity_main.xml
+  ~ ClassName: activity_main.xml
+  ~ LastModified: 11/30/17 4:39 PM
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+
+</LinearLayout>

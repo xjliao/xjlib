@@ -70,13 +70,13 @@ class AuthSettingsActivity : BaseActivity() {
             //Check whether the device has a fingerprint sensor//
             if (!fingerprintManager!!.isHardwareDetected) {
                 // If a fingerprint sensor isn’t available, then inform the user that they’ll be unable to use your app’s fingerprint functionality//
-                auth_settings_text_view!!.text = "手机未检测到指纹传感器，请确认手机是否支持指纹识别"
+                auth_settings_text_view!!.text = "设备未检测到指纹识别传感器，请确认设备是否支持指纹识别"
                 return false
             }
             //Check whether the user has granted your app the USE_FINGERPRINT permission//
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
                 // If your app doesn't have this permission, then display the following text//
-                auth_settings_text_view!!.text = "未开启指纹识别权限"
+                auth_settings_text_view!!.text = "未开启指识别权限"
                 return false
             }
 

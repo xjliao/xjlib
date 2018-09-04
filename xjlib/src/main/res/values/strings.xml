@@ -20,9 +20,9 @@
     <string name="sign_in">登 录</string>
     <string name="password">密码</string>
     <string name="fingerprint_description">确认指纹继续</string>
-    <string name="fingerprint_hint">触摸指纹识别纹传感器</string>
+    <string name="fingerprint_hint">触摸指纹识别传感器</string>
     <string name="password_description">输入登录密码继续</string>
-    <string name="fingerprint_not_support">当前手机系统不支持，至少系统版本6.0以上</string>
+    <string name="fingerprint_not_support">当前设备系统不支持，至少系统版本6.0以上</string>
     <string name="purchase">Purchase</string>
     <string name="purchase_not_invalidated">Purchase not invalidated</string>
     <string name="purchase_button_not_invalidated_description">
@@ -42,7 +42,7 @@
     <string name="description_bugdroid_icon">Android bugdroid image</string>
     <string name="description_fingerprint_icon">Fingerprint icon</string>
     <string name="register_fingerprint">
-        手机系统未设置任何指纹.\n前往 \'设置 -> 安全 -> 指纹\' 录入至少一个指纹
+        设备系统未设置任何指纹.\n前往 \'设置 -> 安全 -> 指纹\' 录入至少一个指纹
     </string>
     <string name="setup_lock_screen">
         安全锁屏未设置.\n前往 \'设置-> 安全 -> 指纹\' 设置指纹认证

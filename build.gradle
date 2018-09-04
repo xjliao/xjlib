@@ -15,6 +15,9 @@ buildscript {
         google()
         jcenter()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven {
+            url 'https://download.01.org/crosswalk/releases/crosswalk-lite/android/maven2/'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.2'
@@ -32,6 +35,9 @@ allprojects {
         google()
         jcenter()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven {
+            url 'https://download.01.org/crosswalk/releases/crosswalk-lite/android/maven2/'
+        }
     }
 }
 

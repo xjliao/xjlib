@@ -39,4 +39,10 @@
         android:background="@drawable/selector_oval_btn"
         android:layout_height="50dp" />
 
+    <Button
+        android:id="@+id/cw"
+        android:text="cross walk"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"/>
+
 </LinearLayout>

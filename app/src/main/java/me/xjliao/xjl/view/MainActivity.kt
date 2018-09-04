@@ -56,6 +56,11 @@ class MainActivity : BaseActivity() {
             intent.putExtra(AUTH_AVATAR, "BAIDU.COM")
             startActivityH(intent, AuthSettingsActivity::class.java)
         }
+
+        cw.setOnClickListener {
+            intent = Intent(this@MainActivity, XCrossWalkActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun initAdapters() {
