@@ -115,7 +115,7 @@ class AuthSettingsActivity : BaseActivity() {
         editor.putBoolean(getString(R.string.use_fingerprint_to_authenticate_key), isChecked)
         editor.apply()
         if (isChecked) {
-            showToast("指纹识别已开启，下次启动生效")
+            showToast("指纹认证已开启，下次启动生效")
         }
     }
 
