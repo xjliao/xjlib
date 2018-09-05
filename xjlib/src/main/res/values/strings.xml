@@ -48,6 +48,6 @@
         安全锁屏未设置.\n前往 \'设置-> 安全 -> 指纹\' 设置指纹认证
     </string>
     <string name="click_to_fingerprint_unlock">
-        点击进行指纹解锁
+        点击进行指纹认证
     </string>
 </resources>
