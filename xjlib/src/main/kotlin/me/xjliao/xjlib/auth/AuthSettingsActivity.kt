@@ -51,12 +51,12 @@ class AuthSettingsActivity : BaseActivity() {
             if (isChecked) {
                 if (!isPassAuthCondition()) {
                     auth_checkbox.isChecked = false
-                    showToast("开启指纹识别失败")
+                    showToast("开启指纹认证失败")
                     return@setOnCheckedChangeListener
                 }
             }
 
-            auth_settings_text_view!!.text = ""
+            auth_settings_text_view!!.text = "g
             updateAuthSettings(isChecked)
         }
     }
