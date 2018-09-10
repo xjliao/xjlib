@@ -41,7 +41,7 @@ android {
         abortOnError false
     }
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.2'
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 15
@@ -111,8 +111,8 @@ android.libraryVariants.all { variant ->
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api 'com.android.support:appcompat-v7:27.0.2'
-    api 'com.android.support:design:27.0.2'
+    api 'com.android.support:appcompat-v7:27.1.1'
+    api 'com.android.support:design:27.1.1'
     api 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.squareup.okhttp3:okhttp:3.4.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
