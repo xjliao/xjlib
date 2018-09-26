@@ -13,14 +13,18 @@
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="titleTextColor">@color/white</item>
-        <!--<item name="android:fitsSystemWindows">true</item>-->
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 
     <style name="AppTheme" parent="AppBaseTheme" />
+
+    <style name="AppThemeNoActionBar" parent="AppBaseTheme">
+        <item name="android:windowActionBar">false</item>
+    </style>
 
     <style name="LoginTheme" parent="AppTheme" />
 

@@ -1,6 +1,26 @@
+//import 'package:flutter/material.dart';
+//
+//void main() => runApp(new MyApp());
+//
+
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(_widgetForRoute(window.defaultRouteName));
+
+Widget _widgetForRoute(String route) {
+  switch (route) {
+    case 'r1':
+      return MyApp();
+    case 'r2':
+      return new MyHomePage(title: 'ss');
+    default:
+      return Center(
+        child: Text('Unknown route: $route', textDirection: TextDirection.ltr),
+      );
+  }
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -19,7 +39,7 @@ class MyApp extends StatelessWidget {
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: new MyHomePage(title: 'F'),
     );
   }
 }
@@ -90,14 +110,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Text(
-              'You have pushed the button this many times:',
+              'You have aiiiii the button this many times:',
             ),
             new Text(
               '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .display1,
+              style: Theme.of(context).textTheme.display1,
             ),
           ],
         ),

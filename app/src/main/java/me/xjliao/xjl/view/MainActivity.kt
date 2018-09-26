@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import me.xjliao.xjl.R
 import me.xjliao.xjlib.auth.*
 import me.xjliao.xjlib.base.BaseActivity
+import me.xjliao.xjlib.base.XFlutterActivity
+import me.xjliao.xjlib.common.Constants
 import me.xjliao.xjlib.ext.showToast
 
 class MainActivity : BaseActivity() {
@@ -59,6 +61,24 @@ class MainActivity : BaseActivity() {
 
         cw.setOnClickListener {
             intent = Intent(this@MainActivity, XCrossWalkActivity::class.java)
+            startActivity(intent)
+        }
+        r1.setOnClickListener{
+            intent = Intent(this@MainActivity, XFlutterActivity::class.java);
+            intent.putExtra(Constants.ROUTE, "r1")
+            startActivity(intent)
+        }
+
+
+        r2.setOnClickListener{
+            intent = Intent(this@MainActivity, XFlutterActivity::class.java);
+            intent.putExtra(Constants.ROUTE, "r2")
+            startActivity(intent)
+        }
+
+        r5.setOnClickListener{
+            intent = Intent(this@MainActivity, XFlutterActivity::class.java);
+            intent.putExtra(Constants.ROUTE, "r5")
             startActivity(intent)
         }
     }

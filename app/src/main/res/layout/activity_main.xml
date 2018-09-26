@@ -45,4 +45,24 @@
         android:layout_height="50dp"
         android:layout_width="match_parent"/>
 
+    <Button
+        android:id="@+id/r1"
+        android:text="r1"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"/>
+
+    <Button
+        android:id="@+id/r2"
+        android:text="r2"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"/>
+
+    <Button
+        android:id="@+id/r5"
+        android:text="r5"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"/>
+
+
+
 </LinearLayout>
