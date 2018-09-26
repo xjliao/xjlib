@@ -53,6 +53,8 @@ public class Constants {
 
     public static final String OPT_FLAG = "OPT_FLAG";
 
+    public static final String ROUTE = "ROUTE";
+
     public static final int NEW = 1;
 
     public static final int EDIT = 2;

@@ -40,11 +40,11 @@ android {
     lintOptions {
         abortOnError false
     }
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion '28.0.2'
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
         versionName version
@@ -110,9 +110,11 @@ android.libraryVariants.all { variant ->
 }
 
 dependencies {
+    implementation project(':flutter')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api 'com.android.support:appcompat-v7:27.1.1'
-    api 'com.android.support:design:27.1.1'
+    api 'com.android.support:appcompat-v7:28.0.0'
+    api 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
     api 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.squareup.okhttp3:okhttp:3.4.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'

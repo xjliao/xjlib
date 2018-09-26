@@ -30,11 +30,11 @@ android {
         exclude 'META-INF/dependencies.txt'
         exclude 'META-INF/LGPL2.1'
     }
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion '28.0.2'
     defaultConfig {
         applicationId "me.xjliao.xjl"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
