@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactInstanceManagerBuilder;
@@ -13,6 +14,9 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+
+import me.xjliao.xjlib.R;
+import me.xjliao.xjlib.xutil.XString;
 
 public abstract  class XReactActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
 
@@ -32,13 +36,24 @@ public abstract  class XReactActivity extends AppCompatActivity implements Defau
 
 	public static final String ARG_COMPONENT_NAME = "arg_component_name";
 
+	public static final String ARG_COMPONENT_TITLE = "arg_component_title";
+
 	public static final String ARG_LAUNCH_OPTIONS = "arg_launch_options";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.XReactTheme);
 		super.onCreate(savedInstanceState);
+
 		Intent intent = getIntent();
 		String moduleName = intent.getStringExtra(ARG_COMPONENT_NAME);
+		String moduleTitle = intent.getStringExtra(ARG_COMPONENT_TITLE);
+		if (XString.isNullOrEmpty(moduleTitle)) {
+			moduleTitle = getResources().getString(R.string.app_name);
+		}
+
+		getSupportActionBar().setTitle(moduleTitle);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		reactRootView = new ReactRootView(this);
 		reactInstanceManagerBuilder = ReactInstanceManager.builder()
@@ -91,6 +106,20 @@ public abstract  class XReactActivity extends AppCompatActivity implements Defau
 		if (reactInstanceManager != null) {
 			reactInstanceManager.onHostResume(this, this);
 		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Pass the event to ActionBarDrawerToggle, if it returns
+		// true, then it has handled the app icon touch event
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				onBackPressed();
+				return true;
+		}
+
+		// Handle your other action bar items...
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Override

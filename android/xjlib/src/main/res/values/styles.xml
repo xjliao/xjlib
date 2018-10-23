@@ -20,6 +20,16 @@
         <item name="android:fitsSystemWindows">true</item>
     </style>
 
+    <style name="XReactTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">false</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:windowActionBar">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
     <style name="AppTheme" parent="AppBaseTheme" />
 
     <style name="AppThemeNoActionBar" parent="AppBaseTheme">

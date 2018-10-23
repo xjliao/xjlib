@@ -41,7 +41,7 @@
         <activity android:name="me.xjliao.xjlib.base.BaseXWebActivity"/>
         <activity android:name=".view.LoginActivity"></activity>
         <activity android:name="me.xjliao.xjlib.base.XFlutterActivity" />
-        <activity android:name=".view.XXReactActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".view.XXReactActivity" android:theme="@style/Theme.AppCompat.Light"/>
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
         <activity android:name="me.xjliao.xjlib.auth.AuthenticationActivity"/> <activity android:name="me.xjliao.xjlib.auth.AuthSettingsActivity"/>
         <!--<activity android:name=".view.XCrossWalkActivity"></activity>-->
