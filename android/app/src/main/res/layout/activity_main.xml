@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017 xjliao.me created by xjliao
+  ~ ProjectName: xjl
+  ~ ModuleName: app
+  ~ FileName: activity_main.xml
+  ~ ClassName: activity_main.xml
+  ~ LastModified: 11/30/17 4:39 PM
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context="me.xjliao.xjl.view.MainActivity">
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Hello World!"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/auth_settings_button"
+        android:text="指纹认证设置"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/back"
+        android:text="返回"
+        android:onClick="back"
+        android:layout_width="300dp"
+        android:background="@drawable/selector_oval_btn"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/cw"
+        android:text="cross walk"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"/>
+
+    <Button
+        android:id="@+id/r1"
+        android:text="r1"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"/>
+
+    <Button
+        android:id="@+id/r2"
+        android:text="r2"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"/>
+
+    <Button
+        android:id="@+id/r5"
+        android:text="r5"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"/>
+
+    <Button
+        android:id="@+id/rd1"
+        android:text="react demo 1"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"/>
+
+    <Button
+        android:id="@+id/rd2"
+        android:text="react demo 2"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"/>
+
+</LinearLayout>

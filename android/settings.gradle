@@ -1,0 +1,18 @@
+/*
+ * Copyright (c) 2017 xjliao.me created by xjliao
+ * ProjectName: xjl
+ * ModuleName: xjl
+ * FileName: settings.gradle
+ * ClassName: settings
+ * LastModified: 11/30/17 4:39 PM
+ */
+
+include ':app', ':xjlib',
+':react-native-code-push'
+project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-code-push/android/app')
+
+setBinding(new Binding([gradle: this]))                                 // new
+evaluate(new File(                                                      // new
+        settingsDir,                                               // new
+        'flutter_module/.android/include_flutter.groovy'                          // new
+))
