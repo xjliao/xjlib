@@ -10,7 +10,8 @@ public class XXReactActivity extends XReactActivity {
 	@Override
 	public void initReactInstanceManagerBuilder() {
 			getReactInstanceManagerBuilder()
-					.addPackage(new CodePush(BuildConfig.CODEPUSH_KEY, getApplicationContext(),  true))
-					. setJSBundleFile(CodePush.getJSBundleFile());
+					.addPackage(new CodePush(BuildConfig.CODEPUSH_KEY,  getApplicationContext(),  BuildConfig.DEBUG))
+					.setUseDeveloperSupport(BuildConfig.DEBUG)
+					. setJSBundleFile(CodePush.getJSBundleFile(XReactActivity.DEFAULT_BUNDLE_ASSET_NAME));
 	}
 }

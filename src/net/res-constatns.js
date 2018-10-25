@@ -1,0 +1,42 @@
+const RES_10001 = '1:10001';
+const RES_10002 = '1:10002';
+const RES_0001 = '0:0001';
+const RES_0002 = '1:0002';
+const RES_1202 = '1:1202';
+const RES_1204 = '1:1204';
+const RES_1301 = '1:1301';
+const RES_1302 = '1:1302';
+const RES_1303 = '1:1303';
+const RES_1304 = '1:1304';
+const RES_1305 = '1:1305';
+const RES_1306 = '1:1306';
+const RES_1307 = '1:1307';
+const RES_1308 = '1:1308';
+const RES_1309 = '1:1309';
+const RES_1310 = '1:1310';
+const RES_1314 = '1:1314';
+const RES_1315 = '1:1315';
+const RES_1316 = '1:1316';
+const RES_1317 = '1:1317';
+const RES_1320 = '1:1320';
+
+var resMap = new Map();
+resMap.set(RES_10001, 'JSON转换失败');
+resMap.set(RES_10002, '网络连接不成功');
+resMap.set(RES_0001, '操作成功');
+resMap.set(RES_0002, '操作失败');
+resMap.set(RES_1202, '用户名或密码错误');
+
+const RES_10001 = '1:10001';
+const RES_10002 = '1:10002';
+const RES_0001 = '0:0001';
+const RES_0002 = '1:0002';
+const RES_1202 = '1:1202';
+const RES_1204 = '1:1204';
+const RES_1301 = '1:1301';
+const RES_1302 = '1:1302';
+const RES_1303 = '1:1303';
+const RES_1304 = '1:1304';
+
+查找;
+无结果 / net / res - constants.js;

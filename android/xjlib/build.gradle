@@ -151,9 +151,6 @@ dependencies {
     implementation 'org.aspectj:aspectjrt:1.8.9'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation  'com.facebook.react:react-native:+'
-//    implementation  ('com.facebook.react:react-native:+') {
-//        exclude group: 'javax.annotation'
-//    }
 }
 
 apply from: 'install.gradle'

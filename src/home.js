@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import codePush from 'react-native-code-push';
+import { getBorrowList } from './net/api';
 
 let codePushOptions = {
 	checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
@@ -9,11 +10,48 @@ let codePushOptions = {
 };
 
 class Home extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			datas: []
+		};
+	}
+
 	onButtonPress() {
 		codePush.sync({
 			updateDialog: true,
 			installMode: codePush.InstallMode.IMMEDIATE
 		});
+	}
+
+	getBorrowListSuccess = (data) => {
+		console.log('getBorrowListSuccess');
+
+		this.setState({
+			datas: data
+		});
+	};
+
+	getBorrowListFailure = (error) => {
+		console.log('getBorrowListFailure');
+		console.log(error);
+	};
+
+	componentDidMount() {
+		var params = {
+			status: '0',
+			order_type: '1',
+			current_page: '1',
+			page_size: '100',
+			borrow_type: '0',
+			time_limit: '0',
+			apr: '0',
+			type: '0',
+			platform: 'android'
+		};
+
+		getBorrowList(params, this.getBorrowListSuccess, this.getBorrowListFailure);
 	}
 
 	codePushStatusDidChange(status) {
@@ -43,7 +81,7 @@ class Home extends React.Component {
 	render() {
 		return (
 			<View>
-				<Text>home.Version: 1.0.0</Text>
+				<Text>home.Version: 1.0.0 {this.state.datas}</Text>
 				<TouchableOpacity onPress={this.onButtonPress}>
 					<Text>Check for updates</Text>
 				</TouchableOpacity>

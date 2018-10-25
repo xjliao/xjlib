@@ -20,17 +20,17 @@ import me.xjliao.xjlib.xutil.XString;
 
 public abstract  class XReactActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
 
-	protected ReactRootView reactRootView;
+	private ReactRootView reactRootView;
 
-	protected ReactInstanceManager reactInstanceManager;
+	private ReactInstanceManager reactInstanceManager;
 
-	protected  ReactInstanceManagerBuilder reactInstanceManagerBuilder;
+	private  ReactInstanceManagerBuilder reactInstanceManagerBuilder;
 
-	protected String bundleAssetName = "index.bundle";
+	public static final String  DEFAULT_BUNDLE_ASSET_NAME = "index.bundle";
 
-	protected String jsMainModulePath = "index";
+	public static final String DEFAULT_JS_MAIN_MODULE_PATH = "index";
 
-	protected Boolean useDeveloperSupport = true;
+	private Boolean useDeveloperSupport = false;
 
 	private final int OVERLAY_PERMISSION_REQ_CODE = 0x10;
 
@@ -58,10 +58,10 @@ public abstract  class XReactActivity extends AppCompatActivity implements Defau
 		reactRootView = new ReactRootView(this);
 		reactInstanceManagerBuilder = ReactInstanceManager.builder()
 		.setApplication(getApplication())
-		.setBundleAssetName(getBundleAssetName())
-		.setJSMainModulePath(getJsMainModulePath())
+		.setBundleAssetName(DEFAULT_BUNDLE_ASSET_NAME)
+		.setJSMainModulePath(DEFAULT_JS_MAIN_MODULE_PATH)
 		.addPackage(new MainReactPackage())
-		.setUseDeveloperSupport(getUseDeveloperSupport())
+		.setUseDeveloperSupport(useDeveloperSupport)
 		.setInitialLifecycleState(LifecycleState.RESUMED);
 
 		// Init react instance manager builder()
@@ -154,44 +154,12 @@ public abstract  class XReactActivity extends AppCompatActivity implements Defau
 		}
 	}
 
-	public ReactRootView getReactRootView() {
-		return reactRootView;
-	}
-
-	public void setReactRootView(ReactRootView reactRootView) {
-		this.reactRootView = reactRootView;
-	}
-
 	public ReactInstanceManager getReactInstanceManager() {
 		return reactInstanceManager;
 	}
 
 	public void setReactInstanceManager(ReactInstanceManager reactInstanceManager) {
 		this.reactInstanceManager = reactInstanceManager;
-	}
-
-	public String getBundleAssetName() {
-		return bundleAssetName;
-	}
-
-	public void setBundleAssetName(String bundleAssetName) {
-		this.bundleAssetName = bundleAssetName;
-	}
-
-	public String getJsMainModulePath() {
-		return jsMainModulePath;
-	}
-
-	public void setJsMainModulePath(String jsMainModulePath) {
-		this.jsMainModulePath = jsMainModulePath;
-	}
-
-	public Boolean getUseDeveloperSupport() {
-		return useDeveloperSupport;
-	}
-
-	public void setUseDeveloperSupport(Boolean useDeveloperSupport) {
-		this.useDeveloperSupport = useDeveloperSupport;
 	}
 
 	public ReactInstanceManagerBuilder getReactInstanceManagerBuilder() {

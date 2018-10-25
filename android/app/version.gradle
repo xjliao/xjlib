@@ -1,0 +1,11 @@
+ext {
+    // vn = versionName
+    vn = "1.0.0"
+    vnStrArr = vn.split("\\.")
+    vcStr = vnStrArr[0] + vnStrArr[1] + vnStrArr[2]
+    // vc = versionCode
+    vc = Integer.parseInt(vcStr)
+    now = new Date()
+
+    buildTimeStamp = now.getTime()
+}

@@ -8,7 +8,6 @@
   -->
 
 <resources>
-    <string name="app_name">xjl</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
