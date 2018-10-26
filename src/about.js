@@ -43,7 +43,7 @@ class About extends React.Component {
 	render() {
 		return (
 			<View>
-				<Text>about.Version: 1.0.0</Text>
+				<Text>about.Version: 1.0.66666666666</Text>
 				<TouchableOpacity onPress={this.onButtonPress}>
 					<Text>Check for updates</Text>
 				</TouchableOpacity>

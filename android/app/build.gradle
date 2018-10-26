@@ -7,7 +7,6 @@
  * LastModified: 11/30/17 4:39 PM
  */
 
-
 project.ext.react = [
         bundleAssetName: "index.bundle",
         entryFile: "src/index.js",
