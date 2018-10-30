@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, WebView } from 'react-native';
 import codePush from 'react-native-code-push';
-import { getBorrowList } from './net/api';
 
 let codePushOptions = {
 	checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
@@ -9,49 +8,12 @@ let codePushOptions = {
 	installMode: codePush.InstallMode.IMMEDIATE
 };
 
-class Home extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			datas: []
-		};
-	}
-
+class About extends React.Component {
 	onButtonPress() {
 		codePush.sync({
 			updateDialog: true,
 			installMode: codePush.InstallMode.IMMEDIATE
 		});
-	}
-
-	getBorrowListSuccess = (data) => {
-		console.log('getBorrowListSuccess');
-
-		this.setState({
-			datas: data
-		});
-	};
-
-	getBorrowListFailure = (error) => {
-		console.log('getBorrowListFailure');
-		console.log(error);
-	};
-
-	componentDidMount() {
-		var params = {
-			status: '0',
-			order_type: '1',
-			current_page: '1',
-			page_size: '100',
-			borrow_type: '0',
-			time_limit: '0',
-			apr: '0',
-			type: '0',
-			platform: 'android'
-		};
-
-		getBorrowList(params, this.getBorrowListSuccess, this.getBorrowListFailure);
 	}
 
 	codePushStatusDidChange(status) {
@@ -80,8 +42,8 @@ class Home extends React.Component {
 
 	render() {
 		return (
-			<View>
-				<Text>home.Version: 1.0.0 {this.state.datas}</Text>
+			<View style={styles.container}>
+				<Text>about.Version: 1.0.66666666666</Text>
 				<TouchableOpacity onPress={this.onButtonPress}>
 					<Text>Check for updates</Text>
 				</TouchableOpacity>
@@ -92,6 +54,7 @@ class Home extends React.Component {
 var styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		backgroundColor: '#989890',
 		justifyContent: 'center'
 	},
 	hello: {
@@ -101,6 +64,6 @@ var styles = StyleSheet.create({
 	}
 });
 
-Home = codePush(codePushOptions)(Home);
+About = codePush(codePushOptions)(About);
 
-export default Home;
+export default About;

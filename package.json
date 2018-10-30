@@ -3,12 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start --projectRoot ./src"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "prop-types": "^15.6.2",
     "react": "16.5.0",
     "react-native": "0.57.1",
-    "react-native-code-push": "^5.4.2"
+    "react-native-code-push": "^5.4.2",
+    "react-redux": "^5.1.0",
+    "redux": "^4.0.1",
+    "redux-axios-middleware": "^4.0.0"
   }
 }

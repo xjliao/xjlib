@@ -10,7 +10,7 @@ compile 'me.xjliao:xjlib:1.0.0'
 #Test your integration
 
 ##1. Run the packager
-$ yarn start
+$ yarn start --projectRoot ./src
 
 ##2. Run the app
 Now build and run your Android app as normal.
