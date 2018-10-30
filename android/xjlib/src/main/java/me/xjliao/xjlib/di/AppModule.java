@@ -15,6 +15,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import me.xjliao.xjlib.BaseApp;
 import me.xjliao.xjlib.xutil.XSharedPreferences;
 
 /**
@@ -25,6 +26,10 @@ public class AppModule {
 
     private Context mContext;
 
+    public AppModule() {
+
+    }
+
     public AppModule(Context context) {
         this.mContext = context;
     }
@@ -32,13 +37,17 @@ public class AppModule {
     @Provides
     @Singleton
     public Context providerContext() {
+        if (this.mContext == null) {
+            return BaseApp.Companion.getAppContext();
+        }
+
         return this.mContext;
     }
 
     @Provides
     @Singleton
     public XSharedPreferences provideSharedPreferences() {
-        return new XSharedPreferences(this.mContext);
+        return new XSharedPreferences(this.mContext == null ? BaseApp.Companion.getAppContext() : this.mContext);
     }
 
 }
