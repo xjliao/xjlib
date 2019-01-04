@@ -68,11 +68,14 @@ public abstract  class XReactActivity extends AppCompatActivity implements Defau
 		initReactInstanceManagerBuilder();
 
 		this.setReactInstanceManager(reactInstanceManagerBuilder.build());
-		Bundle argLaunchOptions = intent.getBundleExtra(ARG_LAUNCH_OPTIONS);
-		reactRootView.startReactApplication(getReactInstanceManager(), moduleName, argLaunchOptions);
+		Bundle argLaunchOptionsBundle = intent.getBundleExtra(ARG_LAUNCH_OPTIONS);
+		setArgLaunchOptions(argLaunchOptionsBundle);
+		reactRootView.startReactApplication(getReactInstanceManager(), moduleName, argLaunchOptionsBundle);
 
 		setContentView(reactRootView);
 	}
+
+	public abstract void setArgLaunchOptions(Bundle bundle);
 
 	public abstract  void initReactInstanceManagerBuilder();
 
