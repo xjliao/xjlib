@@ -150,7 +150,7 @@ dependencies {
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'org.aspectj:aspectjrt:1.8.9'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation  'com.facebook.react:react-native:+'
+    implementation  'com.facebook.react:react-native:0.57.1'
 }
 
 apply from: 'install.gradle'
