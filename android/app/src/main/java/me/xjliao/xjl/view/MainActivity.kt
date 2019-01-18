@@ -21,7 +21,7 @@ import me.xjliao.xjlib.base.BaseActivity
 import me.xjliao.xjlib.base.XFlutterActivity
 import me.xjliao.xjlib.common.Constants
 import me.xjliao.xjlib.ext.showToast
-import me.xjliao.xjlib.react.XReactActivity
+import me.xjliao.xjlib.xreact.XReactActivity
 
 class MainActivity : BaseActivity() {
 

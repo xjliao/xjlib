@@ -1,4 +1,4 @@
-package me.xjliao.xjlib.react;
+package me.xjliao.xjlib.xreact;
 
 import android.content.Intent;
 import android.os.Build;

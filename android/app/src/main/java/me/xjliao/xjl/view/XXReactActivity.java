@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.microsoft.codepush.react.CodePush;
 
 import me.xjliao.xjl.BuildConfig;
-import me.xjliao.xjlib.react.XReactActivity;
+import me.xjliao.xjlib.xreact.XReactActivity;
 
 public class XXReactActivity extends XReactActivity {
 
