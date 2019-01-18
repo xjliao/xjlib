@@ -38,6 +38,8 @@ public abstract  class XReactActivity extends AppCompatActivity implements Defau
 
 	public static final String ARG_COMPONENT_TITLE = "arg_component_title";
 
+	public static final String ARG_COMPONENT_DATA = "arg_component_data";
+
 	public static final String ARG_LAUNCH_OPTIONS = "arg_launch_options";
 
 	@Override
@@ -46,13 +48,13 @@ public abstract  class XReactActivity extends AppCompatActivity implements Defau
 		super.onCreate(savedInstanceState);
 
 		Intent intent = getIntent();
-		String moduleName = intent.getStringExtra(ARG_COMPONENT_NAME);
-		String moduleTitle = intent.getStringExtra(ARG_COMPONENT_TITLE);
-		if (XString.isNullOrEmpty(moduleTitle)) {
-			moduleTitle = getResources().getString(R.string.app_name);
+		String componentName = intent.getStringExtra(ARG_COMPONENT_NAME);
+		String componentTitle = intent.getStringExtra(ARG_COMPONENT_TITLE);
+		if (XString.isNullOrEmpty(componentTitle)) {
+			componentTitle = getResources().getString(R.string.app_name);
 		}
 
-		getSupportActionBar().setTitle(moduleTitle);
+		getSupportActionBar().setTitle(componentTitle);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		reactRootView = new ReactRootView(this);
@@ -68,9 +70,9 @@ public abstract  class XReactActivity extends AppCompatActivity implements Defau
 		initReactInstanceManagerBuilder();
 
 		this.setReactInstanceManager(reactInstanceManagerBuilder.build());
-		Bundle argLaunchOptionsBundle = intent.getBundleExtra(ARG_LAUNCH_OPTIONS);
+		Bundle argLaunchOptionsBundle = getIntent().getExtras();
 		setArgLaunchOptions(argLaunchOptionsBundle);
-		reactRootView.startReactApplication(getReactInstanceManager(), moduleName, argLaunchOptionsBundle);
+		reactRootView.startReactApplication(getReactInstanceManager(), componentName, argLaunchOptionsBundle);
 
 		setContentView(reactRootView);
 	}
