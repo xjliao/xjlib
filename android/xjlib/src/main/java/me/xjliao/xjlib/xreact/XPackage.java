@@ -15,6 +15,7 @@ public  abstract class XPackage implements ReactPackage {
 
 	@Override
 	public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+		nativeModules.add(new XIntentModule(reactContext));
 		addModules(nativeModules,  reactContext);
 		return nativeModules;
 	}
