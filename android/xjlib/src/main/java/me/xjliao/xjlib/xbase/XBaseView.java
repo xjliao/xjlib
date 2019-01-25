@@ -7,15 +7,11 @@
  * LastModified: 12/14/17 11:29 AM
  */
 
-package me.xjliao.xjlib.base;
+package me.xjliao.xjlib.xbase;
 
 /**
  * Created by xjl on 2016/1/14.
  */
-public interface BaseView<T> {
-
-    void success(int code, String msg, String tag, T t);
-
-    void failure(int code, String msg, String tag);
+public interface XBaseView {
 
 }
