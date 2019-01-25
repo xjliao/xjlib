@@ -11,7 +11,7 @@ package me.xjliao.xjlib.net
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-class XXResponse {
+open class XXResponse {
 
     var code: Int = 0
 
