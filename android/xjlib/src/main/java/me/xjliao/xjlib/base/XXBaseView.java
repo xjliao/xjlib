@@ -12,10 +12,10 @@ package me.xjliao.xjlib.base;
 /**
  * Created by xjl on 2016/1/14.
  */
-public interface BaseView<T> {
+public interface XXBaseView<T> {
 
-    void success(String msg, String msgText, String tag, T t);
+    void success(int code, String msg, String tag, T t);
 
-    void failure(String msg, String msgText,  String tag);
+    void failure(int code, String msg, String tag);
 
 }
