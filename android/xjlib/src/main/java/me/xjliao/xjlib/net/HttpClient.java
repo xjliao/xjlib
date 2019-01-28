@@ -97,7 +97,6 @@ public class HttpClient {
     	if (headers == null) {
     		headers= new String[]{};
 	    }
-
 	    this.headers = headers;
 
     	return this;
