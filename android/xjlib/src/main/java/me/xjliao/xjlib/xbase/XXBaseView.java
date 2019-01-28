@@ -9,10 +9,12 @@
 
 package me.xjliao.xjlib.xbase;
 
+import me.xjliao.xjlib.base.BaseView;
+
 /**
  * Created by xjl on 2016/1/14.
  */
-public interface XXBaseView<T> extends XBaseView {
+public interface XXBaseView<T> extends BaseView {
 
     void success(String msg, String msgText, String tag, T t);
 

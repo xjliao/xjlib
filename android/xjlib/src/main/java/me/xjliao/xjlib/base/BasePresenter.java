@@ -12,15 +12,15 @@ package me.xjliao.xjlib.base;
 /**
  * Created by xjl on 2016/1/14.
  */
-public abstract class BasePresenter {
+public abstract class BasePresenter<T extends BaseView> {
 
-    public BaseView view;
+    public T view;
 
     public BasePresenter() {
         setupComponent();
     }
 
-    public BasePresenter(BaseView view) {
+    public BasePresenter(T view) {
         this();
         this.view = view;
     }
