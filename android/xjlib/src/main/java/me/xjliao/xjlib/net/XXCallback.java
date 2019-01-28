@@ -9,11 +9,12 @@
 
 package me.xjliao.xjlib.net;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.io.IOException;
 
-import me.xjliao.xjlib.BaseApp;
+import me.xjliao.xjlib.xutil.GlobalUtil;
 import me.xjliao.xjlib.xutil.XToast;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,8 +56,10 @@ public abstract class XXCallback<T extends XXResponse> implements Callback<T> {
         XXResponse failureResponse = new XXResponse(FAILURE, "请求失败;");
         Log.e(LOG_TAG, t.toString());
         onFailure(failureResponse.getMsg(), failureResponse.getMsgText());
-        XToast.showShortMsg(BaseApp.Companion.getAppContext(), failureResponse.getMsgText());
+        XToast.showShortMsg(GlobalUtil.CONTEXT, failureResponse.getMsgText());
     }
+
+    public abstract Context handleContenxt();
 
     public abstract void onSuccess(String msg,  String msgText, Object data);
 
