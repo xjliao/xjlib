@@ -142,10 +142,8 @@ public class HttpClient {
 	                        Request.Builder requestBuilder = original.newBuilder();
 
                             for (int i =0, n = headers.length; i < n; ++i) {
-                            	if (i != 0 && i % 2 == 0) {
-                            	    continue;
-                                }
-                                requestBuilder.addHeader(headers[i], headers[i+1]);
+                                requestBuilder.addHeader(headers[i].split(":")[0],
+                                        headers[i].split(":")[1]);
                             }
 
                             Request request = requestBuilder
