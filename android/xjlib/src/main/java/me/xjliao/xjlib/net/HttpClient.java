@@ -39,10 +39,11 @@ public class HttpClient {
     private String host;
     private Integer port;
     private Boolean loggingEnabled;
+    private String[] headers;
 
     public HttpClient(Retrofit retrofit, OkHttpClient okHttpClient,
                       HttpLoggingInterceptor loggingInterceptor, Long timeout, String host,
-                      Integer port, Boolean loggingEnabled) {
+                      Integer port, Boolean loggingEnabled, String[] headers) {
         loggingEnabled(loggingEnabled);
         timeout(timeout);
         host(host);
@@ -50,6 +51,7 @@ public class HttpClient {
         loggingInterceptor(loggingInterceptor);
         okHttpClient(okHttpClient);
         retrofit(retrofit);
+        headers(headers);
     }
 
     public static HttpClient getInstance() {
@@ -91,6 +93,16 @@ public class HttpClient {
         return this;
     }
 
+    public HttpClient headers(String[] headers) {
+    	if (headers == null) {
+    		headers= new String[]{};
+	    }
+
+	    this.headers = headers;
+
+    	return this;
+    }
+
     public HttpClient loggingInterceptor(HttpLoggingInterceptor loggingInterceptor) {
         this.loggingInterceptor = loggingInterceptor;
         return this;
@@ -128,11 +140,19 @@ public class HttpClient {
                         @Override
                         public Response intercept(Chain chain) throws IOException {
                             Request original = chain.request();
-                            Request request = original.newBuilder()
+	                        Request.Builder requestBuilder = original.newBuilder();
+
+                            for (int i =0, n = headers.length; i < n; ++i) {
+                            	if (i != 0 && i % 2 == 0) {
+                            	    continue;
+                                }
+                                requestBuilder.addHeader(headers[i], headers[i+1]);
+                            }
+
+                            Request request = requestBuilder
                                     .header("Content-Encoding", "gzip")
                                     .method(original.method(), original.body())
                                     .build();
-
                             return chain.proceed(request);
                         }
                     }).build();
@@ -193,13 +213,14 @@ public class HttpClient {
         private String host;
         private Integer port;
         private Boolean loggingEnabled;
+        private String[] headers;
 
         public Builder() {
 
         }
 
         public HttpClient build() {
-            return new HttpClient(retrofit, okHttpClient, logInterceptor, timeout, host, port, loggingEnabled);
+            return new HttpClient(retrofit, okHttpClient, logInterceptor, timeout, host, port, loggingEnabled, headers);
         }
 
         public HttpClient.Builder retrofit(Retrofit retrofit) {
@@ -277,6 +298,17 @@ public class HttpClient {
                 throw new IllegalStateException("LoggingEnabled already set.");
             }
             this.loggingEnabled = loggingEnabled;
+            return this;
+        }
+
+        public Builder headers(String[] headers) {
+            if (loggingEnabled != null && headers.length % 2 != 0) {
+                throw new IllegalArgumentException("Headers unaviable, it's a string array that must be a key with a value.");
+            }
+            if (this.headers != null) {
+                throw new IllegalStateException("Headers already set.");
+            }
+            this.headers = headers;
             return this;
         }
     }
