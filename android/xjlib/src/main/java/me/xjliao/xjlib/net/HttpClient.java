@@ -132,6 +132,9 @@ public class HttpClient {
     }
 
     public HttpClient ssl(Boolean ssl) {
+        if (ssl == null) {
+            ssl = false;
+        }
         this.ssl = ssl;
         return this;
     }
