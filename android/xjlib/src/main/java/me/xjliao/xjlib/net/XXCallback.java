@@ -9,7 +9,6 @@
 
 package me.xjliao.xjlib.net;
 
-import android.content.Context;
 import android.util.Log;
 
 import java.io.IOException;
@@ -58,8 +57,6 @@ public abstract class XXCallback<T extends XXResponse> implements Callback<T> {
         onFailure(failureResponse.getMsg(), failureResponse.getMsgText());
         XToast.showShortMsg(GlobalUtil.CONTEXT, failureResponse.getMsgText());
     }
-
-    public abstract Context handleContenxt();
 
     public abstract void onSuccess(String msg,  String msgText, Object data);
 
