@@ -248,65 +248,31 @@ public class HttpClient {
 		}
 
 		public HttpClient.Builder retrofit(Retrofit retrofit) {
-			if (retrofit == null) {
-				throw new IllegalArgumentException("Retrofit must not be null.");
-			}
-			if (this.retrofit != null) {
-				throw new IllegalStateException("Retrofit already set.");
-			}
 			this.retrofit = retrofit;
 			return this;
 		}
 
 		public HttpClient.Builder okHttpClient(OkHttpClient okHttpClient) {
-			if (okHttpClient == null) {
-				throw new IllegalArgumentException("OkHttpClient must not be null.");
-			}
-			if (this.okHttpClient != null) {
-				throw new IllegalStateException("OkHttpClient already set.");
-			}
 			this.okHttpClient = okHttpClient;
 			return this;
 		}
 
 		public HttpClient.Builder logInterceptor(HttpLoggingInterceptor logInterceptor) {
-			if (logInterceptor == null) {
-				throw new IllegalArgumentException("HttpLoggingInterceptor must not be null.");
-			}
-			if (this.logInterceptor != null) {
-				throw new IllegalStateException("HttpLoggingInterceptor already set.");
-			}
 			this.logInterceptor = logInterceptor;
 			return this;
 		}
 
 		public HttpClient.Builder timeout(Long timeout) {
-			if (timeout == null) {
-				throw new IllegalArgumentException("Timeout must not be null.");
-			}
-			if (this.timeout != null) {
-				throw new IllegalStateException("Timeout already set.");
-			}
 			this.timeout = timeout;
 			return this;
 		}
 
 		public HttpClient.Builder baseURL(String baseURL) {
-			if (baseURL == null) {
-				throw new IllegalArgumentException("Host must not be null.");
-			}
-
 			this.baseURL = baseURL;
 			return this;
 		}
 
 		public Builder loggingEnabled(Boolean loggingEnabled) {
-			if (loggingEnabled == null) {
-				throw new IllegalArgumentException("LoggingEnabled must not be null.");
-			}
-			if (this.loggingEnabled != null) {
-				throw new IllegalStateException("LoggingEnabled already set.");
-			}
 			this.loggingEnabled = loggingEnabled;
 			return this;
 		}
@@ -319,25 +285,17 @@ public class HttpClient {
 					}
 				}
 			}
-			if (this.headers != null) {
-				throw new IllegalStateException("Headers already set.");
-			}
+
 			this.headers = headers;
 			return this;
 		}
 
 		public Builder ssl(Boolean ssl) {
-			if (ssl == null) {
-				throw new IllegalStateException("Ssl must be not null");
-			}
 			this.ssl = ssl;
 			return this;
 		}
 
 		public Builder connectionSpec(ConnectionSpec connectionSpec) {
-			if (this.connectionSpec != null) {
-				throw new IllegalStateException("Headers already set.");
-			}
 			this.connectionSpec = connectionSpec;
 			return this;
 		}
