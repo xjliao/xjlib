@@ -15,12 +15,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.CipherSuite;
+import okhttp3.ConnectionSpec;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -40,10 +44,13 @@ public class HttpClient {
     private Integer port;
     private Boolean loggingEnabled;
     private String[] headers;
+    private ConnectionSpec connectionSpec;
+    private Boolean ssl;
 
     public HttpClient(Retrofit retrofit, OkHttpClient okHttpClient,
                       HttpLoggingInterceptor loggingInterceptor, Long timeout, String host,
-                      Integer port, Boolean loggingEnabled, String[] headers) {
+                      Integer port, Boolean loggingEnabled, String[] headers, Boolean ssl,
+                      ConnectionSpec connectionSpec) {
         loggingEnabled(loggingEnabled);
         timeout(timeout);
         host(host);
@@ -52,6 +59,8 @@ public class HttpClient {
         okHttpClient(okHttpClient);
         retrofit(retrofit);
         headers(headers);
+        ssl(ssl);
+        connectionSpec(connectionSpec);
     }
 
     public static HttpClient getInstance() {
@@ -122,6 +131,25 @@ public class HttpClient {
         return this.loggingInterceptor;
     }
 
+    public HttpClient ssl(Boolean ssl) {
+        this.ssl = ssl;
+        return this;
+    }
+
+    public HttpClient connectionSpec(ConnectionSpec connectionSpec) {
+        if (!!ssl && connectionSpec == null) {
+            connectionSpec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                    .tlsVersions(TlsVersion.TLS_1_2)
+                    .cipherSuites(
+                            CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                            CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
+                            CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384)
+                    .build();
+        }
+        this.connectionSpec = connectionSpec;
+        return this;
+    }
+
     public HttpClient okHttpClient(OkHttpClient okHttpClient) {
         this.okHttpClient = okHttpClient;
         return this;
@@ -129,30 +157,36 @@ public class HttpClient {
 
     private OkHttpClient getOkHttpClient() {
         if (this.okHttpClient == null) {
-            this.okHttpClient = new OkHttpClient.Builder()
+            OkHttpClient.Builder builder = new OkHttpClient.Builder()
                     .connectTimeout(this.timeout, TimeUnit.SECONDS)
                     .readTimeout(this.timeout, TimeUnit.SECONDS)
                     .writeTimeout(this.timeout, TimeUnit.SECONDS)
                     .retryOnConnectionFailure(true)
                     .addInterceptor(this.getLoggingInterceptor())
                     .addInterceptor(new Interceptor() {
-                        @Override
-                        public Response intercept(Chain chain) throws IOException {
-                            Request original = chain.request();
-	                        Request.Builder requestBuilder = original.newBuilder();
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request original = chain.request();
+                    Request.Builder requestBuilder = original.newBuilder();
 
-                            for (int i =0, n = headers.length; i < n; ++i) {
-                                requestBuilder.addHeader(headers[i].split(":")[0],
-                                        headers[i].split(":")[1]);
-                            }
+                    for (int i =0, n = headers.length; i < n; ++i) {
+                        requestBuilder.addHeader(headers[i].split(":")[0],
+                                headers[i].split(":")[1]);
+                    }
 
-                            Request request = requestBuilder
-                                    .header("Content-Encoding", "gzip")
-                                    .method(original.method(), original.body())
-                                    .build();
-                            return chain.proceed(request);
-                        }
-                    }).build();
+                    Request request = requestBuilder
+                            .header("Content-Encoding", "gzip")
+                            .method(original.method(), original.body())
+                            .build();
+                    return chain.proceed(request);
+                }
+            });
+
+            if (this.connectionSpec != null) {
+                builder.connectionSpecs(Collections.singletonList(this.connectionSpec));
+            }
+
+            this.okHttpClient = builder.build();
         }
 
         return this.okHttpClient;
@@ -173,12 +207,16 @@ public class HttpClient {
             mapper.setVisibilityChecker(mapper.getSerializationConfig()
                     .getDefaultVisibilityChecker()
                     .withFieldVisibility(JsonAutoDetect.Visibility.ANY));
-            this.retrofit = new Retrofit.Builder()
-                    .baseUrl("http://" + this.host + ":" + this.port)
+            String protocol = "http";
+            if (connectionSpec != null) {
+                protocol = "https";
+            }
+            Retrofit.Builder builder = new Retrofit.Builder()
+                    .baseUrl(protocol + "://" + this.host + ":" + this.port)
                     .client(this.getOkHttpClient())
                     .addConverterFactory(JacksonConverterFactory.create(mapper))
-                    .addConverterFactory(SimpleXmlConverterFactory.create())
-                    .build();
+                    .addConverterFactory(SimpleXmlConverterFactory.create());
+            this.retrofit = builder.build();
         }
 
         return this.retrofit;
@@ -211,13 +249,15 @@ public class HttpClient {
         private Integer port;
         private Boolean loggingEnabled;
         private String[] headers;
+        private Boolean ssl;
+        private ConnectionSpec connectionSpec;
 
         public Builder() {
 
         }
 
         public HttpClient build() {
-            return new HttpClient(retrofit, okHttpClient, logInterceptor, timeout, host, port, loggingEnabled, headers);
+            return new HttpClient(retrofit, okHttpClient, logInterceptor, timeout, host, port, loggingEnabled, headers, ssl, connectionSpec);
         }
 
         public HttpClient.Builder retrofit(Retrofit retrofit) {
@@ -299,8 +339,12 @@ public class HttpClient {
         }
 
         public Builder headers(String[] headers) {
-            if (loggingEnabled != null && headers.length % 2 != 0) {
-                throw new IllegalArgumentException("Headers unaviable, it's a string array that must be a key with a value.");
+            if (headers != null && headers.length > 0) {
+                for (int i = 0, n = headers.length; i < n; ++i) {
+                    if (headers[i].split(":").length != 2) {
+                        throw new IllegalArgumentException("Headers unaviable, it's a string array that must be a key with a value. value=" + headers[i]);
+                    }
+                }
             }
             if (this.headers != null) {
                 throw new IllegalStateException("Headers already set.");
@@ -308,5 +352,22 @@ public class HttpClient {
             this.headers = headers;
             return this;
         }
+
+        public Builder ssl(Boolean ssl) {
+            if (ssl == null) {
+                throw new IllegalStateException("Ssl must be not null");
+            }
+            this.ssl = ssl;
+            return this;
+        }
+
+        public Builder connectionSpec(ConnectionSpec connectionSpec) {
+            if (this.connectionSpec != null) {
+                throw new IllegalStateException("Headers already set.");
+            }
+            this.connectionSpec = connectionSpec;
+            return this;
+        }
     }
+
 }
