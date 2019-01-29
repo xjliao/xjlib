@@ -129,7 +129,7 @@ public class HttpClient {
 	}
 
 	public HttpClient connectionSpec(ConnectionSpec connectionSpec) {
-		if (!!ssl && connectionSpec == null) {
+		if (connectionSpec == null) {
 			connectionSpec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
 					.tlsVersions(TlsVersion.TLS_1_2)
 					.cipherSuites(
