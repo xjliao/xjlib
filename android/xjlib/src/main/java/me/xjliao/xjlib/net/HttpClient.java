@@ -130,7 +130,7 @@ public class HttpClient {
 	}
 
 	public HttpClient connectionSpec(ConnectionSpec connectionSpec) {
-		if (connectionSpec == null) {
+		if (ssl && connectionSpec == null) {
 			connectionSpec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
 					.tlsVersions(TlsVersion.TLS_1_2)
 					.cipherSuites(
@@ -138,8 +138,8 @@ public class HttpClient {
 							CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
 							CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384)
 					.build();
+			this.connectionSpec = connectionSpec;
 		}
-		this.connectionSpec = connectionSpec;
 		return this;
 	}
 
