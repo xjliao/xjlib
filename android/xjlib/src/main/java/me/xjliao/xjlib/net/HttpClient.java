@@ -163,6 +163,11 @@ public class HttpClient {
 							Request.Builder requestBuilder = original.newBuilder().header("Content-Encoding", "gzip");
 
 							for (int i = 0, n = headers.length; i < n; ++i) {
+								if (headers[i].split(":").length < 2) {
+									requestBuilder.removeHeader(headers[i].split(":")[0]);
+									continue;
+								}
+
 								requestBuilder.header(headers[i].split(":")[0],
 										headers[i].split(":")[1]);
 							}
