@@ -52,7 +52,7 @@ public abstract class XXCallback<T extends XXResponse> implements Callback<T> {
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        XXResponse failureResponse = new XXResponse(FAILURE, "请求失败;");
+        XXResponse failureResponse = new XXResponse(FAILURE, "请求失败");
         Log.e(LOG_TAG, t.toString());
         onFailure(failureResponse.getMsg(), failureResponse.getMsgText());
         XToast.showShortMsg(GlobalUtil.CONTEXT, failureResponse.getMsgText());
