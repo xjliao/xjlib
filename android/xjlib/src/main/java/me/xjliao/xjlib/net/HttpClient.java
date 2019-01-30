@@ -284,8 +284,8 @@ public class HttpClient {
 		public Builder headers(String[] headers) {
 			if (headers != null && headers.length > 0) {
 				for (int i = 0, n = headers.length; i < n; ++i) {
-					if (headers[i].split(":").length != 2) {
-						throw new IllegalArgumentException("Headers unaviable, it's a string array that must be a key with a value. value=" + headers[i]);
+					if (!headers[i].contains(":")) {
+						throw new IllegalArgumentException("Headers invalid, it's a string array that must be a key with a value. value=" + headers[i]);
 					}
 				}
 			}
