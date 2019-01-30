@@ -160,15 +160,14 @@ public class HttpClient {
 						@Override
 						public Response intercept(Chain chain) throws IOException {
 							Request original = chain.request();
-							Request.Builder requestBuilder = original.newBuilder();
+							Request.Builder requestBuilder = original.newBuilder().header("Content-Encoding", "gzip");
 
 							for (int i = 0, n = headers.length; i < n; ++i) {
-								requestBuilder.addHeader(headers[i].split(":")[0],
+								requestBuilder.header(headers[i].split(":")[0],
 										headers[i].split(":")[1]);
 							}
 
 							Request request = requestBuilder
-									.header("Content-Encoding", "gzip")
 									.method(original.method(), original.body())
 									.build();
 							return chain.proceed(request);
