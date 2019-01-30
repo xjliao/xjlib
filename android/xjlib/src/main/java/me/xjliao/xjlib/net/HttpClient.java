@@ -41,10 +41,10 @@ public class HttpClient {
 	private HttpLoggingInterceptor loggingInterceptor;
 	private Long timeout;
 	private Boolean loggingEnabled;
-	private String[] headers;
-	private ConnectionSpec connectionSpec;
-	private Boolean ssl;
 	private String baseURL;
+	private String[] headers;
+	private Boolean ssl;
+	private ConnectionSpec connectionSpec;
 
 	public HttpClient(Retrofit retrofit, OkHttpClient okHttpClient,
 	                  HttpLoggingInterceptor loggingInterceptor, Long timeout, String baseURL,
@@ -77,8 +77,8 @@ public class HttpClient {
 		if (timeout == null) {
 			timeout = 30L;
 		}
-		this.timeout = timeout;
 
+		this.timeout = timeout;
 		return this;
 	}
 
@@ -95,8 +95,8 @@ public class HttpClient {
 		if (headers == null) {
 			headers = new String[]{};
 		}
-		this.headers = headers;
 
+		this.headers = headers;
 		return this;
 	}
 
@@ -124,6 +124,7 @@ public class HttpClient {
 		if (ssl == null) {
 			ssl = false;
 		}
+
 		this.ssl = ssl;
 		return this;
 	}
@@ -212,7 +213,6 @@ public class HttpClient {
 
 	public HttpClient loggingEnabled(Boolean loggingEnabled) {
 		this.loggingEnabled = loggingEnabled;
-
 		return this;
 	}
 
@@ -300,5 +300,4 @@ public class HttpClient {
 			return this;
 		}
 	}
-
 }
