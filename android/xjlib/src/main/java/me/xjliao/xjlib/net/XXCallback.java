@@ -35,7 +35,7 @@ public abstract class XXCallback<T extends XXResponse> implements Callback<T> {
                 XToast.showShortMsg(GlobalUtil.CONTEXT, xxResponse.getMsgText());
 	            onFailure(xxResponse.getMsg(), xxResponse.getMsgText());
             } else {
-	            onSuccess(xxResponse.getMsg(),  xxResponse.getMsgText(), xxResponse);
+	            onSuccess(xxResponse.getMsg(),  xxResponse.getMsgText(), (T) xxResponse);
             }
         } else {
             try {
@@ -60,7 +60,7 @@ public abstract class XXCallback<T extends XXResponse> implements Callback<T> {
         XToast.showShortMsg(GlobalUtil.CONTEXT, failureResponse.getMsgText());
     }
 
-    public abstract void onSuccess(String msg,  String msgText, Object data);
+    public abstract void onSuccess(String msg,  String msgText,  T data);
 
     public abstract  void onFailure(String msg,  String msgText);
 
