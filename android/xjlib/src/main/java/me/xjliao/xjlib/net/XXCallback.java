@@ -32,9 +32,10 @@ public abstract class XXCallback<T extends XXResponse> implements Callback<T> {
         if (response.isSuccessful()) {
             XXResponse xxResponse = response.body();
             if (!SUCCESS.equals(xxResponse.getMsg())) {
-                onSuccess(xxResponse.getMsg(),  xxResponse.getMsgText(), xxResponse);
+                XToast.showShortMsg(GlobalUtil.CONTEXT, xxResponse.getMsgText());
+	            onFailure(xxResponse.getMsg(), xxResponse.getMsgText());
             } else {
-                onFailure(xxResponse.getMsg(), xxResponse.getMsgText());
+	            onSuccess(xxResponse.getMsg(),  xxResponse.getMsgText(), xxResponse);
             }
         } else {
             try {
@@ -46,6 +47,7 @@ public abstract class XXCallback<T extends XXResponse> implements Callback<T> {
             }
 
             XXResponse failureResponse = new XXResponse(FAILURE, "请求失败");
+            XToast.showShortMsg(GlobalUtil.CONTEXT, failureResponse.getMsgText());
             onFailure(failureResponse.getMsg(),  failureResponse.getMsgText());
         }
     }
