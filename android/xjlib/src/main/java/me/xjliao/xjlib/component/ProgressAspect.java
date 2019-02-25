@@ -64,7 +64,9 @@ public class ProgressAspect {
                         ((Activity) context).runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                progressDialog.setMessage(progress.progressMsg());
+                                if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
+                                    progressDialog.setMessage(progress.progressMsg());
+                                }
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -75,13 +77,17 @@ public class ProgressAspect {
                                                 ((Activity) context).runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        progressDialog.setMessage(progress.afterProgressMsg());
+                                                        if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
+                                                            progressDialog.setMessage(progress.afterProgressMsg());
+                                                        }
                                                         new Thread(new Runnable() {
                                                             @Override
                                                             public void run() {
                                                                 try {
                                                                     Thread.sleep(XTime.deployRequestSeconds());
-                                                                    progressDialog.dismiss();
+                                                                    if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
+                                                                        progressDialog.dismiss();
+                                                                    }
                                                                 } catch (InterruptedException e) {
                                                                     e.printStackTrace();
                                                                 }
