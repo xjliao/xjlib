@@ -36,7 +36,7 @@ public class ProgressAspect {
 
     public static final String TAG = "progress";
 
-    private volatile Object result;
+    private Object result;
 
     @Pointcut("execution(@me.xjliao.xjlib.annotation.Progress * *(..))")
     public void progress() {
@@ -49,65 +49,73 @@ public class ProgressAspect {
 
     @Around(value = "progress() && @annotation(progress)", argNames = "progress")
     public Object progressExecute(final ProceedingJoinPoint joinPoint, final Progress progress) {
-        final Context context = getContext(joinPoint.getThis());
-        final XProgressDialog progressDialog = XProgressDialog.newInstance(context, progress.beforeProgressMsg());
-        if (progress.isDialogAble() && null != progressDialog && !progressDialog.isShowing()) {
-            progressDialog.show();
-        }
+        final Activity activity = (Activity) getContext(joinPoint.getThis());
+        if (activity != null && !activity.isFinishing()) {
+            final XProgressDialog progressDialog = XProgressDialog.newInstance(activity, progress.beforeProgressMsg());
+            if (progress.isDialogAble() && null != progressDialog && !progressDialog.isShowing()) {
+                progressDialog.show();
+            }
 
-        if (progress.isDeployAble()) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(XTime.deployRequestSeconds());
-                        ((Activity) context).runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
-                                    progressDialog.setMessage(progress.progressMsg());
-                                }
-                                new Thread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        try {
-                                            Thread.sleep(XTime.deployRequestSeconds());
-                                            result = joinPoint.proceed();
-                                            if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
-                                                ((Activity) context).runOnUiThread(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
-                                                            progressDialog.setMessage(progress.afterProgressMsg());
-                                                        }
-                                                        new Thread(new Runnable() {
-                                                            @Override
-                                                            public void run() {
-                                                                try {
-                                                                    Thread.sleep(XTime.deployRequestSeconds());
-                                                                    if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
-                                                                        progressDialog.dismiss();
-                                                                    }
-                                                                } catch (InterruptedException e) {
-                                                                    e.printStackTrace();
-                                                                }
-                                                            }
-                                                        }).start();
-                                                    }
-                                                });
-                                            }
-                                        } catch (Throwable throwable) {
-                                            throwable.printStackTrace();
-                                        }
+            if (progress.isDeployAble()) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(XTime.deployRequestSeconds());
+                            activity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
+                                        progressDialog.setMessage(progress.progressMsg());
                                     }
-                                }).start();
-                            }
-                        });
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                Thread.sleep(XTime.deployRequestSeconds());
+                                                result = joinPoint.proceed();
+                                                if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
+                                                    activity.runOnUiThread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
+                                                                progressDialog.setMessage(progress.afterProgressMsg());
+                                                            }
+                                                            new Thread(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    try {
+                                                                        Thread.sleep(XTime.deployRequestSeconds());
+                                                                        if (progress.isDialogAble() && null != progressDialog && progressDialog.isShowing()) {
+                                                                            progressDialog.dismiss();
+                                                                        }
+                                                                    } catch (InterruptedException e) {
+                                                                        e.printStackTrace();
+                                                                    }
+                                                                }
+                                                            }).start();
+                                                        }
+                                                    });
+                                                }
+                                            } catch (Throwable throwable) {
+                                                throwable.printStackTrace();
+                                            }
+                                        }
+                                    }).start();
+                                }
+                            });
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-            }).start();
+                }).start();
+            }
+        } else {
+            try {
+                result = joinPoint.proceed();
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
         }
 
         return result;
