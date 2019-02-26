@@ -48,7 +48,7 @@ public class ProgressAspect {
     }
 
     @Around(value = "progress() && @annotation(progress)", argNames = "progress")
-    public synchronized Object progressExecute(final ProceedingJoinPoint joinPoint, final Progress progress) {
+    public Object progressExecute(final ProceedingJoinPoint joinPoint, final Progress progress) {
         final Context context = getContext(joinPoint.getThis());
         final XProgressDialog progressDialog = XProgressDialog.newInstance(context, progress.beforeProgressMsg());
         if (progress.isDialogAble() && null != progressDialog && !progressDialog.isShowing()) {
