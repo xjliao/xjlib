@@ -23,3 +23,60 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+###############################去掉所有打印
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** e(...);
+    public static *** i(...);
+    public static *** v(...);
+    public static *** println(...);
+    public static *** w(...);
+    public static *** wtf(...);
+}
+
+-assumenosideeffects class android.util.Log {
+   public static *** d(...);
+   public static *** v(...);
+}
+
+-assumenosideeffects class android.util.Log {
+    public static *** e(...);
+    public static *** v(...);
+}
+
+-assumenosideeffects class android.util.Log {
+    public static *** i(...);
+    public static *** v(...);
+}
+
+-assumenosideeffects class android.util.Log {
+    public static *** w(...);
+    public static *** v(...);
+}
+-assumenosideeffects class java.io.PrintStream {
+    public *** println(...);
+    public *** print(...);
+}
+
+-ignorewarnings
+
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
+ -keep class android.support.**{*;}
+
+-dontwarn com.squareup.**
+
+-dontwarn com.squareup.**
+
+-dontwarn okhttp3.**
+
+-dontwarn okio.**
+
+-keep class com.rtzc.pnca.BuildConfig { *; }
+
+-keepattributes InnerClasses
+-keep class **.R$* {*;}
+
+-keep class org.xmlpull.v1.** { *;}
+ -dontwarn org.xmlpull.v1.**
