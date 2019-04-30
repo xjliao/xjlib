@@ -71,6 +71,7 @@ android {
             minifyEnabled true
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            consumerProguardFiles  'proguard-rules.pro'
             debuggable false
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField "String", "HOST", "\"127.0.0.1\""
